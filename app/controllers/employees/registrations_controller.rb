@@ -11,12 +11,9 @@ class Employees::RegistrationsController < Devise::RegistrationsController
    #end
 
   # POST /resource
-   def create
-     build_resource(sign_up_params)
-     resource.company = Company.create!(domain: 'xyz.com.br')
-     resource.save
-     super
-   end
+   #def create     
+   #  super
+   #end
 
   # GET /resource/edit
   # def edit
