@@ -3,22 +3,22 @@ require 'rails_helper'
 feature 'Employee fill company information' do
     scenario 'page is correct' do
         company = Company.create!(domain: 'xyz.com.br')
-        account = Account.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: true)
-        login_as account
+        account = Employee.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: true)
+        login_as account, :scope => :employee
 
         visit root_path
-        click_on 'Empresa'
+        click_on 'Ver Empresa'
         
-        expect(page).to have_content('Dados da empresa')
+        expect(page).to have_content('Dados da Empresa')
     end
 
     scenario 'successfully' do        
         company = Company.create!(domain: 'xyz.com.br')
-        account = Account.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: true)
-        login_as account
+        account = Employee.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: true)
+        login_as account, :scope => :employee
 
         visit root_path
-        click_on 'Empresa'
+        click_on 'Ver Empresa'        
         click_on 'Editar Empresa'
         fill_in 'Nome', with: 'XYZ Empreendimentos'
         fill_in 'Logomarca', with: 'logo.png'
@@ -27,6 +27,8 @@ feature 'Employee fill company information' do
         fill_in 'Número', with: '90'
         fill_in 'Complemento', with: 'Casa 27'
         fill_in 'Bairro', with: 'Centro'
+        fill_in 'Cidade', with: 'Salvador'
+        fill_in 'Estado', with: 'Bahia'
         fill_in 'CNPJ', with: '01.234.567/0001-89'
         fill_in 'Site', with: 'www.xyz.com.br'
         fill_in 'Linkedin', with: 'www.linkedin.com/xyz'        
@@ -35,17 +37,17 @@ feature 'Employee fill company information' do
         expect(current_path).to eq(company_path(Company.last))
         expect(page).to have_content('XYZ Empreendimentos')
         expect(page).to have_content('01.234.567/0001-89')        
-        expect(page).to have_content('Administrada por: mauro@xyz.com.br')
     end
 
     scenario 'employee is not administrator' do        
         company = Company.create!(domain: 'xyz.com.br')
-        account = Account.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)
-        login_as account
+        admin_account = Employee.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)
+        account = Employee.create!(email: 'teste@xyz.com.br', password: '123456', company: company, admin: false)
+        login_as account, :scope => :employee
 
         visit root_path
-        click_on 'Empresa'
+        click_on 'Ver Empresa'
         
-        expect(page).to have_content('Você não tem permissão para editar essa página')       
+        expect(page).not_to have_content('Editar Empresa')       
     end
 end

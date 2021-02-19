@@ -17,7 +17,7 @@ feature 'Employee create account using email' do
     end
 
     scenario 'company exists' do        
-        company = Company.create!(domain: 'xyz.com.br')
+        company = Company.create!(domain: 'xyz')
         companyExists = Company.find_by(domain: 'xyz')
         account = Employee.create!(email: 'mauro@xyz.com.br', password: '123456', company: companyExists, admin: false)
 

@@ -1,0 +1,31 @@
+    
+    <%=@company.domain%>
+    <h2>Edição da Empresa</h2>
+    
+    <%=form_with(model: @company) do |f| %>
+        <dt><%= f.label :name, 'Nome' %></dt>
+        <dd><%= f.text_field :name %></dd>
+        <dt><%= f.label :logo, 'Logomarca' %></dt>
+        <dd><%= f.text_field :logo %></dd>
+        <dt><%= f.label :cep, 'CEP' %></dt>
+        <dd><%= f.text_field :cep %></dd>
+        <dt><%= f.label :address, 'Logradouro' %></dt>
+        <dd><%= f.text_field :address %></dd>
+        <dt><%= f.label :address_number, 'Número' %></dt>
+        <dd><%= f.text_field :address_number %></dd>
+        <dt><%= f.label :address_door, 'Complemento' %></dt>
+        <dd><%= f.text_field :address_door %></dd>
+        <dt><%= f.label :district, 'Bairro' %></dt>
+        <dd><%= f.text_field :district %></dd>
+        <dt><%= f.label :city, 'Cidade' %></dt>
+        <dd><%= f.text_field :city %></dd>
+        <dt><%= f.label :state, 'Estado' %></dt>
+        <dd><%= f.text_field :state %></dd>
+        <dt><%= f.label :cnpj, 'CNPJ' %></dt>
+        <dd><%= f.text_field :cnpj %></dd>
+        <dt><%= f.label :url, 'Site' %></dt>
+        <dd><%= f.text_field :url %></dd>
+        <dt><%= f.label :linkedin, 'Linkedin' %></dt>
+        <dd><%= f.text_field :linkedin %></dd>
+        <%= f.submit 'Atualizar Empresa' %>        
+    <% end %>

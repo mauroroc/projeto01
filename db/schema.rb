@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_18_234015) do
+ActiveRecord::Schema.define(version: 2021_02_19_215117) do
 
   create_table "candidates", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 2021_02_18_234015) do
     t.string "domain"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "logo"
+    t.string "cep"
+    t.string "address"
+    t.string "address_number"
+    t.string "address_door"
+    t.string "district"
+    t.string "city"
+    t.string "state"
+    t.string "cnpj"
+    t.string "url"
+    t.string "linkedin"
   end
 
   create_table "employees", force: :cascade do |t|
