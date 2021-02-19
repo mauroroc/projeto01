@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <%= link_to "Entrar como Empresa", new_employee_session_path %>
+    <%= link_to "Entrar como Candidato", new_candidate_session_path %>
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

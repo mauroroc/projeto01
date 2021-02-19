@@ -9,7 +9,7 @@ feature 'Employee create account using email' do
 
     scenario 'successfully' do        
         company = Company.create!(domain: 'xyz.com.br')
-        account = Account.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)
+        account = Employee.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)
         company.updateAdm!(account)
                 
         expect(company).to be_valid
@@ -19,7 +19,7 @@ feature 'Employee create account using email' do
     scenario 'company exists' do        
         company = Company.create!(domain: 'xyz.com.br')
         companyExists = Company.find_by(domain: 'xyz.com.br')
-        account = Account.create!(email: 'mauro@xyz.com.br', password: '123456', company: companyExists)
+        account = Employee.create!(email: 'mauro@xyz.com.br', password: '123456', company: companyExists, admin: false)
 
         expect(Company.find_by(domain: 'xyz.com.br')).to eq(companyExists)        
         expect(account).to be_valid       
