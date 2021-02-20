@@ -3,23 +3,23 @@ require 'rails_helper'
 feature 'Employee add job' do
     scenario 'page is correct' do        
         company = Company.create!(domain: 'xyz.com.br')
-        account = Account.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)
-        login_as account
+        account = Employee.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)
+        login_as account, :scope => :employee
 
         visit root_path
         click_on 'Vagas'        
 
-        expect(page).to have_content('Cadastrar')
+        expect(page).to have_content('Cadastrar Vaga')
     end
 
     scenario 'successfully' do        
         company = Company.create!(domain: 'xyz.com.br')
-        account = Account.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)
-        login_as account
+        account = Employee.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)
+        login_as account, :scope => :employee
 
         visit root_path
         click_on 'Vagas'
-        click_on 'Cadastrar Vagas'
+        click_on 'Cadastrar Vaga'
 
         fill_in 'Titulo', with: 'FullStack Remoto'
         fill_in 'Descrição', with: 'Conhecimento em Ruby on Rails e desejável em React'
@@ -38,11 +38,11 @@ feature 'Employee add job' do
 
     scenario 'admin jobs' do        
         company = Company.create!(domain: 'xyz.com.br')
-        account = Account.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)   
-        login_as account
+        account = Employee.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)   
+        login_as account, :scope => :employee
         job = Job.create!(title: 'FullStack Remoto', description: 'Conhecimento em Ruby on Rails e desejável em React', 
                           salary: 'Entre R$ 2.500 e R$ 5.000', stage: 'Júnior', need: 'Nível superior', valid: '20/06/2021',
-                          quantity: 10, company: company, account: account)
+                          quantity: 10, company: company, status: true)
    
         visit root_path
         click_on 'Vagas'
@@ -53,13 +53,13 @@ feature 'Employee add job' do
 
     scenario 'not admin jobs in other company' do        
         company = Company.create!(domain: 'xyz.com.br')
-        account = Account.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)           
+        account = Emplyoee.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)           
         job = Job.create!(title: 'FullStack Remoto', description: 'Conhecimento em Ruby on Rails e desejável em React', 
                           salary: 'Entre R$ 2.500 e R$ 5.000', stage: 'Júnior', need: 'Nível superior', valid: '20/06/2021',
-                          quantity: 10, company: company, account: account, status: true)
+                          quantity: 10, company: company, status: true)
         another_company = Company.create!(domain: 'abc.com.br')
-        another_account = Account.create!(email: 'teobaldo@abc.com.br', password: '123456', company: another_company, admin: false)           
-        login_as another_account
+        another_account = Emplyoee.create!(email: 'teobaldo@abc.com.br', password: '123456', company: another_company, admin: false)           
+        login_as another_account, :scope => :employee
    
         visit root_path
         click_on 'Vagas'
@@ -70,11 +70,11 @@ feature 'Employee add job' do
 
     scenario 'update jobs' do        
         company = Company.create!(domain: 'xyz.com.br')
-        account = Account.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)
+        account = Emplyoee.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)
         job = Job.create!(title: 'FullStack Remoto', description: 'Conhecimento em Ruby on Rails e desejável em React', 
                           salary: 'Entre R$ 2.500 e R$ 5.000', stage: 'Júnior', need: 'Nível superior', valid: '20/06/2021',
-                          quantity: 10, company: company, account: account, status: true)
-        login_as account
+                          quantity: 10, company: company, status: true)
+        login_as account, :scope => :employee
 
         visit root_path
         click_on 'Vagas'
@@ -91,11 +91,11 @@ feature 'Employee add job' do
     
     scenario 'disable jobs' do        
         company = Company.create!(domain: 'xyz.com.br')
-        account = Account.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)
+        account = Emplyoee.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)
         job = Job.create!(title: 'FullStack Remoto', description: 'Conhecimento em Ruby on Rails e desejável em React', 
                           salary: 'Entre R$ 2.500 e R$ 5.000', stage: 'Júnior', need: 'Nível superior', valid: '20/06/2021',
-                          quantity: 10, company: company, account: account, status: true)
-        login_as account
+                          quantity: 10, company: company, status: true)
+        login_as account, :scope => :employee
 
         visit root_path
         click_on 'Vagas'

@@ -16,9 +16,9 @@
       <%= link_to "Ver Empresa", companies_path %>      
       <%= link_to "Sair", destroy_employee_session_path, method: :delete  %>
     <% else %>
-      <%= link_to "Entrar como Empresa", new_employee_session_path %>
+      <%= link_to "Entrar como Empresa", new_employee_session_path %>      
     <% end %>
-
+    <%= link_to "Vagas", jobs_path %>
     <!-- link_to "Entrar como Candidato", new_candidate_session_path -->
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>

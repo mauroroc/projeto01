@@ -1,0 +1,19 @@
+<h2>Cadastro da Vaga</h2>
+    
+    <%=form_with(model: @job) do |f| %>
+        <dt><%= f.label :title, 'Titulo' %></dt>
+        <dd><%= f.text_field :title %></dd>
+        <dt><%= f.label :description, 'Descrição' %></dt>
+        <dd><%= f.text_area :description %></dd>
+        <dt><%= f.label :salary, 'Faixa Salarial' %></dt>
+        <dd><%= f.select :salary_id, options_for_select([['Não Definido',0],['Abaixo de R$ 5.000',1],['Entre R$ 5.000 e R$ 10.000', 2],['Acima de R$ 10.000', 3]]) %></dd>
+        <dt><%= f.label :stage, 'Nível' %></dt>
+        <dd><%= f.select :stage, options_for_select([['Júnior',0],['Pleno',1],['Sênior', 2]]) %></dd>
+        <dt><%= f.label :need, 'Requisitos Obrigatórios' %></dt>
+        <dd><%= f.text_area :need %></dd>
+        <dt><%= f.label :valid, 'Data Limite' %></dt>
+        <dd><%= f.text_field :valid %></dd>
+        <dt><%= f.label :quantity, 'Total de Vagas' %></dt>
+        <dd><%= f.text_field :quantity %></dd>        
+        <%= f.submit 'Cadastrar' %>        
+    <% end %>
