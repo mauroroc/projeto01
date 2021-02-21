@@ -14,7 +14,7 @@
     <dt>Total de Vagas</dt>
     <dd><%= @job.quantity %></dd>
 
-<% if current_employee.company == @job.company %>
+<% if @logado %>
     <div>
       <td><%= link_to "Editar Vaga", edit_job_path(@job) %></td>
       <td><%= link_to "Desabilitar Vaga", disable_job_path(@job), method: :post, data:{ confirm: "Essa ação não poderá ser desfeita, confirma?" } %></td>

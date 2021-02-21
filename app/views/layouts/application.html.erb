@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Projeto01</title>
+    <title>Balcão de Empregos</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,13 +13,19 @@
   <body>
     <% if employee_signed_in? %>
       <%= current_employee.email %>
-      <%= link_to "Ver Empresa", companies_path %>      
+      <%= link_to "Minha Empresa", current_employee.company %>      
       <%= link_to "Sair", destroy_employee_session_path, method: :delete  %>
     <% else %>
       <%= link_to "Entrar como Empresa", new_employee_session_path %>      
     <% end %>
-    <%= link_to "Vagas", jobs_path %>
+    <%= link_to "Empresas", companies_path %>
+    <%= link_to "Vagas", jobs_path %>    
     <!-- link_to "Entrar como Candidato", new_candidate_session_path -->
+    <%= form_with url: "/search", method: :get do |form| %>
+      <%= form.label :query, "Buscar por:" %>
+      <%= form.text_field :query %>
+      <%= form.submit "Buscar" %>
+    <% end %>
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>

@@ -1,0 +1,40 @@
+    <%=@company.domain%>
+    <h2>Dados da Empresa</h2>
+    <dt>Nome</dt>
+    <dd><%=@company.name%></dd>
+    <dt>Logomarca</dt>
+    <dd><%=@company.logo%></dd>
+    <dt>CEP</dt>
+    <dd><%=@company.cep%></dd>
+    <dt>Logradouro</dt>
+    <dd><%=@company.address%></dd>
+    <dt>Número</dt>
+    <dd><%=@company.address_number%></dd>
+    <dt>Complemento</dt>
+    <dd><%=@company.address_door%></dd>
+    <dt>Bairro</dt>
+    <dd><%=@company.district%></dd>
+    <dt>Cidade</dt>
+    <dd><%=@company.city%></dd>
+    <dt>Estado</dt>
+    <dd><%=@company.state%></dd>
+    <dt>CNPJ</dt>
+    <dd><%=@company.cnpj%></dd>
+    <dt>Site</dt>
+    <dd><%=@company.url%></dd>
+    <dt>Linkedin</dt>
+    <dd><%=@company.linkedin%></dd>
+    <% if @admin %>   
+        <%= link_to "Editar Empresa", edit_company_path(@company) %>
+    <% end %>
+    <h3>Todas as vagas dessa empresa</h3>
+    <table>
+    <% @company.job.each do |job| %>
+        <tr>
+            <% if job.Ativo? && job.expiration >= DateTime.now %>   
+                <td><%= link_to job.title, job %></td>  
+            <% end %>
+        </tr>     
+    <% end %>
+    </table>
+    

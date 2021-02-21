@@ -1,11 +1,24 @@
 class JobsController < ApplicationController
-    before_action :authenticate_employee!
+    #before_action :authenticate_employee!
     def index
-        @jobs = Job.where(status: true)
+        if current_employee
+            @jobs = Job.all
+        else    
+            @jobs = Job.where(status: true)
+        end
     end
 
     def show
         @job = Job.find(params[:id])
+        if current_employee
+            if current_employee.company == @job.company
+              @logado = true
+            else
+              @logado = false
+            end
+        else
+            @logado = false
+        end        
     end
     
     def new

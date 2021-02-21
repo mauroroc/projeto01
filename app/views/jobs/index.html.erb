@@ -1,13 +1,22 @@
-<h2>Relação de Vagas</h2>
-<ul>
-  <% @jobs.each do |job| %>
+<h2>Relação de Vagas</h2>    
     <table>
       <tr>
-      <td><%= link_to job.title, job %></td>  
-      <td><%= job.status %></td>    
-    </table>
-  <% end %>
-</ul>
+        <td>Empresa</td>
+        <td>Vaga</td>
+        <td>Status</td>
+      </tr>
+      <% @jobs.each do |job| %>
+      <tr>      
+        <td><%= link_to job.company.domain, job.company %>
+        <% if job.Ativo? && job.expiration >= DateTime.now %>  
+          <td><%= link_to job.title, job %></td>  
+        <% else %>
+          <td><%= job.title %>
+        <% end %>
+        <td><%= job.status %></td>  
+      </tr>
+      <% end %>  
+    </table>  
 <% if employee_signed_in? %>    
     <%= link_to "Cadastrar Vaga", new_job_path %>          
 <% end %>

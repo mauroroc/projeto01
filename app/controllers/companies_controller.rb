@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
-    before_action :authenticate_employee!
+    #before_action :authenticate_employee!
     def index
-        @company = current_employee.company
+        @companies = Company.all
     end
 
     def edit
@@ -18,8 +18,17 @@ class CompaniesController < ApplicationController
     end
 
     def show
-        @company = current_employee.company
-        render :index
+        @company = Company.find(params[:id])
+        if current_employee
+            @admin = current_employee.admin                
+        else
+            @admin = false
+        end            
+    end
+
+    def jobs
+        company = Company.find(params[:id])
+        @jobs = Job.where(company: company, status: true)        
     end
 
     private
