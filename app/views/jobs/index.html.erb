@@ -1,4 +1,13 @@
 <h2>Relação de Vagas</h2>
+<ul>
+  <% @jobs.each do |job| %>
+    <table>
+      <tr>
+      <td><%= link_to job.title, job %></td>  
+      <td><%= job.status %></td>    
+    </table>
+  <% end %>
+</ul>
 <% if employee_signed_in? %>    
     <%= link_to "Cadastrar Vaga", new_job_path %>          
 <% end %>

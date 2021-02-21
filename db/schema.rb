@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_20_212334) do
+ActiveRecord::Schema.define(version: 2021_02_21_144202) do
 
   create_table "candidates", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_02_20_212334) do
     t.integer "salary"
     t.integer "stage"
     t.text "need"
-    t.date "valid"
+    t.date "expiration"
     t.integer "quantity"
     t.integer "company_id", null: false
     t.boolean "status"
