@@ -1,1 +1,16 @@
 <h2>Retorno da busca</h2>
+<p>Você buscou por "<%= @query %>" em <%= @item %>
+
+<% if @items %>
+<% @items.each do |i| %>
+      <tr>        
+        <% if @item == "Empresa" %>      
+            <td><%= link_to i.domain, i %></td>        
+        <% else %>
+            <td><%= link_to i.title, i %></td> 
+        <% end %>
+      </tr>
+<% end %> 
+<% else %>
+<p>A busca retornou vazia</p>
+<% end %>

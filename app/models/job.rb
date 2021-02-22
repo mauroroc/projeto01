@@ -6,6 +6,14 @@ class Job < ApplicationRecord
     enum stage: { Junior: 0, Pleno: 1, Senior: 2 }
     enum status: { Ativo: true, Inativo: false }
 
+    def self.search(search)
+        if search
+            @result_search = Job.where(title: search)
+        else
+            @result_search = Job.all
+        end
+    end
+
     private
         def ensure_change_status                     
             self.status = true
