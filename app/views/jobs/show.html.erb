@@ -14,9 +14,11 @@
     <dt>Total de Vagas</dt>
     <dd><%= @job.quantity %></dd>
 
+<div>
 <% if @logado %>
-    <div>
-      <td><%= link_to "Editar Vaga", edit_job_path(@job) %></td>
-      <td><%= link_to "Desabilitar Vaga", disable_job_path(@job), method: :post, data:{ confirm: "Essa ação não poderá ser desfeita, confirma?" } %></td>
-    </div>
+  <td><%= link_to "Editar Vaga", edit_job_path(@job) %></td>
+  <td><%= link_to "Desabilitar Vaga", disable_job_path(@job), method: :post, data:{ confirm: "Essa ação não poderá ser desfeita, confirma?" } %></td>
+<% else %> 
+  <td><%= link_to "Quero me cadastrar para essa vaga", edit_candidate_registration_path %></td>             
 <% end %>
+</div>

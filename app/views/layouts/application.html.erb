@@ -10,17 +10,25 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body>    
     <% if employee_signed_in? %>
       <%= current_employee.email %>
       <%= link_to "Minha Empresa", current_employee.company %>      
       <%= link_to "Sair", destroy_employee_session_path, method: :delete  %>
     <% else %>
-      <%= link_to "Entrar como Empresa", new_employee_session_path %>      
-    <% end %>
+      <%if candidate_signed_in? %>
+        <%= current_candidate.email %>
+        <%= link_to "Meu Perfil", edit_candidate_registration_path %>      
+        <%= link_to "Sair", destroy_candidate_session_path, method: :delete  %>
+      <% else %>      
+        <%= link_to "Entrar como Empresa", new_employee_session_path %>      
+        <%= link_to "Entrar como Candidato", new_candidate_session_path %>
+      <% end %>
+    <% end %>        
+
     <%= link_to "Empresas", companies_path %>
-    <%= link_to "Vagas", jobs_path %>    
-    <!-- link_to "Entrar como Candidato", new_candidate_session_path -->
+    <%= link_to "Vagas", jobs_path %>
+    
     <%= form_with url: "/search", method: :get do |f| %>
       <%= f.label :query, "Buscar por:" %>
       <%= f.text_field :query %>

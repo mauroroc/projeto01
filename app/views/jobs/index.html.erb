@@ -6,15 +6,13 @@
         <td>Status</td>
       </tr>
       <% @jobs.each do |job| %>
-      <tr>      
-        <td><%= link_to job.company.domain, job.company %>
-        <% if job.Ativo? && job.expiration >= DateTime.now %>  
-          <td><%= link_to job.title, job %></td>  
-        <% else %>
-          <td><%= job.title %>
-        <% end %>
-        <td><%= job.status %></td>  
+      <% if job.Ativo? && job.expiration >= DateTime.now %> 
+      <tr>             
+        <td><%= link_to job.company.domain, job.company %>        
+        <td><%= link_to job.title, job %></td>                  
+        <td><%= job.status %></td>          
       </tr>
+      <% end %>
       <% end %>  
     </table>  
 <% if employee_signed_in? %>    

@@ -7,7 +7,7 @@ feature 'Employee fill company information' do
         login_as account, :scope => :employee
 
         visit root_path
-        click_on 'Ver Empresa'
+        click_on 'Minha Empresa'
         
         expect(page).to have_content('Dados da Empresa')
     end
@@ -18,7 +18,7 @@ feature 'Employee fill company information' do
         login_as account, :scope => :employee
 
         visit root_path
-        click_on 'Ver Empresa'        
+        click_on 'Minha Empresa'        
         click_on 'Editar Empresa'
         fill_in 'Nome', with: 'XYZ Empreendimentos'
         fill_in 'Logomarca', with: 'logo.png'
@@ -46,7 +46,7 @@ feature 'Employee fill company information' do
         login_as account, :scope => :employee
 
         visit root_path
-        click_on 'Ver Empresa'
+        click_on 'Minha Empresa'
         
         expect(page).not_to have_content('Editar Empresa')       
     end

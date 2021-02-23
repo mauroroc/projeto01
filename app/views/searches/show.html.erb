@@ -2,15 +2,17 @@
 <p>Você buscou por "<%= @query %>" em <%= @item %>
 
 <% if @items %>
+<table>
 <% @items.each do |i| %>
       <tr>        
         <% if @item == "Empresa" %>      
-            <td><%= link_to i.domain, i %></td>        
+            <td><%= link_to i.name, i %></td>        
         <% else %>
             <td><%= link_to i.title, i %></td> 
         <% end %>
       </tr>
 <% end %> 
+</table>
 <% else %>
 <p>A busca retornou vazia</p>
 <% end %>

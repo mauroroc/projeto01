@@ -7,8 +7,8 @@ class Company < ApplicationRecord
     end
 
     def self.search(search)
-        if search
-            @result_search = Company.where(domain: search)
+        if search != ""                     
+            @result_search = Company.where(name: search)
         else
             @result_search = Company.all
         end
