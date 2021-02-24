@@ -14,7 +14,7 @@
     <% if employee_signed_in? %>
       <%= current_employee.email %>
       <%= link_to "Minha Empresa", current_employee.company %> 
-      <%= link_to "Minhas Ofertas", jobcandidates_path %>           
+      <%= link_to "Ver Candidaturas", jobcandidates_path %>           
       <%= link_to "Sair", destroy_employee_session_path, method: :delete  %>
     <% else %>
       <%if candidate_signed_in? %>

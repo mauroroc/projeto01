@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       post 'make' 
       get 'decline'
       get 'proposal'
+      post 'declined'
+      post 'sended'
     end
   end
   resources :jobcandidates

@@ -104,6 +104,6 @@ feature 'Employee add job' do
         click_on 'Desabilitar Vaga'
 
         expect(current_path).to eq(jobs_path)
-        expect(page).to have_content('Inativo')        
+        expect(page).not_to have_content('Inativo')        
     end    
 end

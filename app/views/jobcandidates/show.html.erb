@@ -31,9 +31,24 @@
 <h2>Informações da Oferta</h2>
     <dt>Status</dt>
     <dd><%=@offer.status%></dd>
+    <%if @offer.status == 'Candidato Declinado'%>
+        <dt>Motivo</dt>
+        <dd><%=@offer.motive%>
+        <dt>Mensagem</dt>
+        <dd><%=@offer.message%>
+    <%end%>
+    <%if @offer.status == 'Proposta Feita'%>
+        <dt>Proposta Salarial</dt>
+        <dd><%=@offer.salary_proposal%>
+        <dt>Mensagem</dt>
+        <dd><%=@offer.message%>
+        <dt>Data de Inicio</dt>
+        <dd><%=@offer.start_date%>
+    <%end%>
+
 <br/>
 <%if current_employee %>
-    <%if @offer.status='Pendente de Avaliação'%>
+    <%if @offer.status=='Pendente de Avaliação'%>
         <p><%= link_to 'Declinar Candidatura', decline_offer_path(@offer) %></p>
         <p><%= link_to 'Enviar Proposta', proposal_offer_path(@offer) %></p>
     <%end%>

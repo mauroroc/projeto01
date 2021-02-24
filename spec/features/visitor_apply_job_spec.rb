@@ -26,9 +26,7 @@ feature 'Visitor see companies and jobs' do
             quantity: 10, company: company, status: true)
         
         visit root_path
-        click_on "Vagas"
-        click_on "FullStack Remoto"
-        click_on "Quero me cadastrar para essa vaga"
+        click_on "Entrar como Candidato"
         click_on "Sign up"
         fill_in 'Nome Completo/Nome Social', with: 'Fulano de Tal'
         fill_in 'E-mail', with: 'teste@teste.com.br'
@@ -53,7 +51,7 @@ feature 'Visitor see companies and jobs' do
                     quantity: 10, company: company, status: true)                                    
         job_candidate = JobCandidate.create!(job: job, candidate: candidate, status: 0) # 0 é pendente
         
-        login_as candidate
+        login_as candidate, :scope => :candidate
 
         visit root_path
         click_on 'Meu Perfil'
