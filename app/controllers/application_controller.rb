@@ -1,14 +1,11 @@
-require 'candidate_sanitizer'
-
-class ApplicationController < ActionController::Base
-    protect_from_forgery with: :exception
+class ApplicationController < ActionController::Base    
+    before_action :configure_permitted_parameters, if: :devise_controller?
+    
     protected
-  
-    def devise_parameter_sanitizer
-      if resource_class == Candidate
-        Candidate::ParameterSanitizer.new(Candidate, :candidate, params)
-      else
-        super # Use the default one
+    def configure_permitted_parameters
+      if resource_class == Candidate        
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :cpf, :phone, :bio, :email, :password])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:name, :cpf, :phone, :bio, :email, :password])                    
       end
     end
 end

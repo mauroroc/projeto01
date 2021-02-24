@@ -13,12 +13,14 @@
   <body>    
     <% if employee_signed_in? %>
       <%= current_employee.email %>
-      <%= link_to "Minha Empresa", current_employee.company %>      
+      <%= link_to "Minha Empresa", current_employee.company %> 
+      <%= link_to "Minhas Ofertas", jobcandidates_path %>           
       <%= link_to "Sair", destroy_employee_session_path, method: :delete  %>
     <% else %>
       <%if candidate_signed_in? %>
         <%= current_candidate.email %>
-        <%= link_to "Meu Perfil", edit_candidate_registration_path %>      
+        <%= link_to "Meu Perfil", edit_candidate_registration_path %> 
+        <%= link_to "Minhas Ofertas", jobcandidates_path %>     
         <%= link_to "Sair", destroy_candidate_session_path, method: :delete  %>
       <% else %>      
         <%= link_to "Entrar como Empresa", new_employee_session_path %>      

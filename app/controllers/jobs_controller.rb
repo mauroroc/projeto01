@@ -26,21 +26,6 @@ class JobsController < ApplicationController
         @cadastro = true
     end
 
-    def edit
-        @job = Job.find(params[:id])
-        @cadastro = true
-      end
-    
-      def update
-        @job = Job.find(params[:id])
-    
-        if @job.update(job_update_params)
-          redirect_to @job
-        else
-          render :edit
-        end
-      end
-
     def create      
         update_params = job_params
         update_params[:company] = current_employee.company
@@ -52,11 +37,26 @@ class JobsController < ApplicationController
         end
     end
 
+    def edit
+        @job = Job.find(params[:id])
+        @cadastro = true
+      end
+    
+    def update
+        @job = Job.find(params[:id])
+
+        if @job.update(job_update_params)
+            redirect_to @job
+        else
+            render :edit
+        end
+    end
+
     def disable
         @job = Job.find(params[:id])
         @job.update_attribute(:status, false)        
         redirect_to jobs_path
-    end
+    end    
 
     private
         def job_params

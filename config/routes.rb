@@ -3,6 +3,15 @@ Rails.application.routes.draw do
   devise_for :candidates, path: 'candidates'
   devise_for :employees, path: 'employees'
   resource :search
+  resource :candidate
+  resources :offers do
+    member do
+      post 'make' 
+      get 'decline'
+      get 'proposal'
+    end
+  end
+  resources :jobcandidates
   resources :companies
   resources :jobs do
     post 'disable', on: :member    

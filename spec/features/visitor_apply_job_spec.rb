@@ -44,9 +44,14 @@ feature 'Visitor see companies and jobs' do
 
     scenario 'update candidate' do  
         candidate = Candidate.create!(name: 'Fulano de Tal', email: 'teste@teste.com.br', password: 'abcdef', 
-                                    cpf: '123.456.789-00', phone: '(71) 99999-1234', bio: 'Jovem, inteligente, procurando emprego')                  
-        
-        #job_candidate = JobCandidate.create!(job: job, candidate: candidate, status: 0) # 0 é pendente
+                    cpf: '123.456.789-00', phone: '(71) 99999-1234', bio: 'Jovem, inteligente, procurando emprego')    
+        company = Company.create!(domain: 'xyz.com.br', name:'XYZ Empreendimentos', logo: 'logo.png', cep: '40.000-000',
+                    address: 'Av. Teste', address_number: '90', address_door: 'casa 27', district: 'Centro',
+                    cnpj: '01.234.567/0001-89', url: 'www.xyz.com.br', linkedin: 'www.linkedin.com/xyz')                                         
+        job = Job.create!(title: 'FullStack Remoto', description: 'Conhecimento em Ruby on Rails e desejável em React', 
+                    salary: 1, stage: 1, need: 'Nível superior', expiration: '20/06/2021',
+                    quantity: 10, company: company, status: true)                                    
+        job_candidate = JobCandidate.create!(job: job, candidate: candidate, status: 0) # 0 é pendente
         
         login_as candidate
 

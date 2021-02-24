@@ -1,0 +1,41 @@
+<h2>Informações da Vaga</h2>
+    <dt>Empresa</dt>
+    <dd><%= @job.company.name %></dd>
+    <dt>Titulo</dt>
+    <dd><%= @job.title %></dd>
+    <dt>Descrição</dt>
+    <dd><%= @job.description %></dd>
+    <dt>Faixa Salarial</dt>
+    <dd><%= @job.salary %></dd>
+    <dt>Nível</dt>
+    <dd><%= @job.stage %></dd>
+    <dt>Requisitos Obrigatórios</dt>
+    <dd><%= @job.need %></dd>
+    <dt>Data Limite</dt>
+    <dd><%= @job.expiration %></dd>
+    <dt>Total de Vagas</dt>
+    <dd><%= @job.quantity %></dd>
+
+<h2>Informações do Candidato</h2>
+    <dt>Nome Completo/Nome Social</dt>
+    <dd><%=@candidate.name%></dd>
+    <dt>CPF</dt>
+    <dd><%=@candidate.cpf%></dd>
+    <dt>E-mail</dt>
+    <dd><%=@candidate.email%></dd>
+    <dt>Telefone</dt>
+    <dd><%=@candidate.phone%></dd>
+    <dt>Biografia Resumida</dt>
+    <dd><%=@candidate.bio%></dd>
+
+<h2>Informações da Oferta</h2>
+    <dt>Status</dt>
+    <dd><%=@offer.status%></dd>
+<br/>
+<%if current_employee %>
+    <%if @offer.status='Pendente de Avaliação'%>
+        <p><%= link_to 'Declinar Candidatura', decline_offer_path(@offer) %></p>
+        <p><%= link_to 'Enviar Proposta', proposal_offer_path(@offer) %></p>
+    <%end%>
+<% end %>
+

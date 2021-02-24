@@ -1,5 +1,6 @@
 class Job < ApplicationRecord
     belongs_to :company    
+    has_many :jobcandidate
     before_validation :ensure_change_status
 
     enum salary: { NaoDefinido: 0, Abaixo_de_5000: 1, Entre_5000_e_10000: 2, Acima_de_10000: 3 }
