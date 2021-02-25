@@ -48,8 +48,15 @@ class OffersController < ApplicationController
 
     def accepted
         @offer = JobCandidate.find(params[:id]) 
+        job = @offer.job
+        qtd = job.quantity
         @offer.update_attribute(:accept_date, params[:accept_date])
         @offer.update_attribute(:status, 4)
+        qtd = qtd - 1
+        job.update_attribute(:quantity, qtd)        
+        if qtd == 0
+            job.update_attribute(:status, false)        
+        end
         redirect_to jobcandidates_path        
     end
 end

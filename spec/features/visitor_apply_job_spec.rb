@@ -13,7 +13,7 @@ feature 'Visitor see companies and jobs' do
         click_on "Vagas"
         click_on "FullStack Remoto"
 
-        expect(page).to have_content('Quero me cadastrar para essa vaga')           
+        expect(page).to have_content('Visualização da Vaga')           
     end
 
 
