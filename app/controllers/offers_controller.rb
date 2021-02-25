@@ -30,4 +30,26 @@ class OffersController < ApplicationController
         @offer.update_attribute(:status, 2)
         redirect_to jobcandidates_path
     end
+
+    def refuse
+        @offer = JobCandidate.find(params[:id])         
+    end
+
+    def refused
+        @offer = JobCandidate.find(params[:id]) 
+        @offer.update_attribute(:motive, params[:motive])
+        @offer.update_attribute(:status, 3)
+        redirect_to jobcandidates_path
+    end
+
+    def accept
+        @offer = JobCandidate.find(params[:id])         
+    end
+
+    def accepted
+        @offer = JobCandidate.find(params[:id]) 
+        @offer.update_attribute(:accept_date, params[:accept_date])
+        @offer.update_attribute(:status, 4)
+        redirect_to jobcandidates_path        
+    end
 end

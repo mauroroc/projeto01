@@ -11,6 +11,10 @@ Rails.application.routes.draw do
       get 'proposal'
       post 'declined'
       post 'sended'
+      get 'refuse'
+      get 'accept'
+      post 'refused'
+      post 'accepted'
     end
   end
   resources :jobcandidates

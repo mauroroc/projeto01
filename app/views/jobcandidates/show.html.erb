@@ -31,26 +31,38 @@
 <h2>Informações da Oferta</h2>
     <dt>Status</dt>
     <dd><%=@offer.status%></dd>
-    <%if @offer.status == 'Candidato Declinado'%>
+    <%if @offer.status == 'Candidato Declinado' || @offer.status == 'Proposta Recusada'%>
         <dt>Motivo</dt>
         <dd><%=@offer.motive%>
-        <dt>Mensagem</dt>
-        <dd><%=@offer.message%>
+         <%if @offer.status == 'Candidato Declinado'%>
+            <dt>Mensagem</dt>
+            <dd><%=@offer.message%>
+        <% end %>
     <%end%>
-    <%if @offer.status == 'Proposta Feita'%>
+    <%if @offer.status == 'Proposta Feita' || @offer.status == 'Proposta Aceita'%>
         <dt>Proposta Salarial</dt>
         <dd><%=@offer.salary_proposal%>
         <dt>Mensagem</dt>
         <dd><%=@offer.message%>
         <dt>Data de Inicio</dt>
         <dd><%=@offer.start_date%>
-    <%end%>
+        <%if @offer.status == 'Proposta Aceita'%>
+            <dt>Confirmação data de Inicio</dt>
+            <dd><%=@offer.accept_date%>
+        <%end%>
+    <%end%>   
 
 <br/>
 <%if current_employee %>
     <%if @offer.status=='Pendente de Avaliação'%>
         <p><%= link_to 'Declinar Candidatura', decline_offer_path(@offer) %></p>
         <p><%= link_to 'Enviar Proposta', proposal_offer_path(@offer) %></p>
+    <%end%>
+<% end %>
+<%if current_candidate %>
+    <%if @offer.status=='Proposta Feita'%>
+        <p><%= link_to 'Recusar Oferta', refuse_offer_path(@offer) %></p>
+        <p><%= link_to 'Aceitar Oferta', accept_offer_path(@offer) %></p>
     <%end%>
 <% end %>
 
