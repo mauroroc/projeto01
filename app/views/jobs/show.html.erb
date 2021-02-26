@@ -1,25 +1,39 @@
-<h1>Visualização da Vaga</h1>
-    <dt>Titulo</dt>
-    <dd><%= @job.title %></dd>
-    <dt>Descrição</dt>
-    <dd><%= @job.description %></dd>
-    <dt>Faixa Salarial</dt>
-    <dd><%= @job.salary %></dd>
-    <dt>Nível</dt>
-    <dd><%= @job.stage %></dd>
-    <dt>Requisitos Obrigatórios</dt>
-    <dd><%= @job.need %></dd>
-    <dt>Data Limite</dt>
-    <dd><%= @job.expiration %></dd>
-    <dt>Total de Vagas</dt>
-    <dd><%= @job.quantity %></dd>
-
-<div>
-<% if @logado %>
-  <td><%= link_to "Editar Vaga", edit_job_path(@job) %></td>
-  <td><%= link_to "Desabilitar Vaga", disable_job_path(@job), method: :post, data:{ confirm: "Essa ação não poderá ser desfeita, confirma?" } %></td>
-<% end %>   
-<% if current_candidate %>
-  <td><%= link_to "Quero me cadastrar para essa vaga", make_offer_path(@job), method: :post, data:{ confirm: "Confirma o interesse nessa vaga?" } %></td>            
-<% end %>
+<div class="well text-center">    
+    <h2>Visualização da Vaga</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col font-weight-bold">Titulo</div>
+            <div class="col"><%=@job.title%></div>
+            <div class="col font-weight-bold">Nível</div>
+            <div class="col"><%=@job.stage%></div>
+        </div>        
+        <div class="row">
+            <div class="col font-weight-bold">Faixa Salarial</div>
+            <div class="col"><%=@job.salary%></div>
+            <div class="col font-weight-bold">Requisitos Obrigatórios</div>
+            <div class="col"><%=@job.need%></div>
+        </div>
+        <div class="row">
+            <div class="col font-weight-bold">Data Limite</div>
+            <div class="col"><%=@job.expiration%></div>
+            <div class="col font-weight-bold">Total de Vagas</div>
+            <div class="col"><%=@job.quantity%></div>
+        </div> 
+        <div class="row">
+            <div class="col font-weight-bold">Descrição</div>            
+        </div>       
+        <div class="row">
+            <div class="col"><%=@job.description%></div>            
+        </div>
+        <div class="row">
+          <% if @logado %>
+            <p class="col"><%= link_to "Editar Vaga", edit_job_path(@job), :class => "btn btn-secondary" %></p>
+            <p class="col"><%= link_to "Desabilitar Vaga", disable_job_path(@job), method: :post, data:{ confirm: "Essa ação não poderá ser desfeita, confirma?" }, :class => "btn btn-danger" %></p>
+          <% end %>   
+          <% if current_candidate %>
+            <p><%= link_to "Quero me cadastrar para essa vaga", make_offer_path(@job), method: :post, data:{ confirm: "Confirma o interesse nessa vaga?" }, :class => "btn btn-success" %></p>            
+          <% end %>
+        </div>
+    </div>
+    <p><%=link_to "Voltar", :back, :class => "btn btn-warning" %></p>
 </div>

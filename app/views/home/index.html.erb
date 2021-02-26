@@ -1,2 +1,17 @@
-<h1>Balcão de Empregos</h1>
-<p>Boas vindas ao sistema</p>
+<div class="well text-center">
+    <div class="col-md-12">Escolha como você deseja acessar o sistema:</div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Empresa</h2>
+            <%= link_to new_employee_session_path, :class => "nav-link" do %>
+                <%= image_tag("empresa.jpg", alt: "Empresa")%>
+            <% end %>
+        </div>
+        <div class="col-md-6">
+            <h2>Candidato</h2>
+            <%= link_to new_candidate_session_path, :class => "nav-link" do %>
+                <%= image_tag("candidato.jpg", alt: "Colaborador")%>
+            <% end %>
+        </div>
+    </div>
+</div>

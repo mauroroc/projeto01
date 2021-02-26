@@ -1,18 +1,30 @@
-<h2>Retorno da busca</h2>
-<p>Você buscou por "<%= @query %>" em <%= @item %>
-
-<% if @items %>
-<table>
-<% @items.each do |i| %>
-      <tr>        
-        <% if @item == "Empresa" %>      
-            <td><%= link_to i.name, i %></td>        
-        <% else %>
-            <td><%= link_to i.title, i %></td> 
-        <% end %>
-      </tr>
-<% end %> 
-</table>
-<% else %>
-<p>A busca retornou vazia</p>
-<% end %>
+<div class="well text-center">    
+  <h2>Retorno da busca</h2>
+  <p>Você buscou por "<%= @query %>" em <%= @item %>
+  <% if @jobs %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Empresa</th>
+          <th scope="col">Vaga</th>
+          <th scope="col">Status</th>
+          <th scope="col">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @jobs.each do |job| %>
+          <% if job.Ativo? && job.expiration >= DateTime.now %> 
+            <tr>             
+              <td><%= job.company.name %>        
+              <td><%= job.title %></td>                  
+              <td><%= job.status %></td> 
+              <td><%= link_to "Ver essa vaga", job, :class => "btn btn-primary" %></td>       
+            </tr>
+          <% end %>
+        <% end %>  
+      </tbody>
+    </table>
+  <% else %>
+    <p>A busca retornou vazia</p>
+  <% end %>
+</div>

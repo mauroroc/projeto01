@@ -1,40 +1,68 @@
-    <%=@company.domain%>
+<div class="well text-center">    
     <h2>Dados da Empresa</h2>
-    <dt>Nome</dt>
-    <dd><%=@company.name%></dd>
-    <dt>Logomarca</dt>
-    <dd><%=@company.logo%></dd>
-    <dt>CEP</dt>
-    <dd><%=@company.cep%></dd>
-    <dt>Logradouro</dt>
-    <dd><%=@company.address%></dd>
-    <dt>Número</dt>
-    <dd><%=@company.address_number%></dd>
-    <dt>Complemento</dt>
-    <dd><%=@company.address_door%></dd>
-    <dt>Bairro</dt>
-    <dd><%=@company.district%></dd>
-    <dt>Cidade</dt>
-    <dd><%=@company.city%></dd>
-    <dt>Estado</dt>
-    <dd><%=@company.state%></dd>
-    <dt>CNPJ</dt>
-    <dd><%=@company.cnpj%></dd>
-    <dt>Site</dt>
-    <dd><%=@company.url%></dd>
-    <dt>Linkedin</dt>
-    <dd><%=@company.linkedin%></dd>
-    <% if @admin %>   
-        <%= link_to "Editar Empresa", edit_company_path(@company) %>
-    <% end %>
+    <div class="container">
+        <div class="row">
+            <div class="col font-weight-bold">Nome</div>
+            <div class="col"><%=@company.name%></div>
+            <div class="col font-weight-bold">Logomarca</div>
+            <div class="col"><%=@company.logo%></div>
+        </div>
+        <div class="row">
+            <div class="col font-weight-bold">CNPJ</div>
+            <div class="col"><%=@company.cep%></div>
+            <div class="col font-weight-bold">CEP</div>
+            <div class="col"><%=@company.cnpj%></div>
+        </div>
+        <div class="row">
+            <div class="col font-weight-bold">Logradouro</div>
+            <div class="col"><%=@company.address%></div>
+            <div class="col font-weight-bold">Número</div>
+            <div class="col"><%=@company.address_number%></div>
+        </div>
+        <div class="row">
+            <div class="col font-weight-bold">Complemento</div>
+            <div class="col"><%=@company.address_door%></div>
+            <div class="col font-weight-bold">Bairro</div>
+            <div class="col"><%=@company.district%></div>
+        </div>
+        <div class="row">
+            <div class="col font-weight-bold">Cidade</div>
+            <div class="col"><%=@company.city%></div>
+            <div class="col font-weight-bold">Estado</div>
+            <div class="col"><%=@company.state%></div>
+        </div>
+        <div class="row">
+            <div class="col font-weight-bold">Site</div>
+            <div class="col"><%=@company.url%></div>
+            <div class="col font-weight-bold">Linkedin</div>
+            <div class="col"><%=@company.linkedin%></div>
+        </div>
+        <% if @admin %>   
+            <%= link_to "Editar Empresa", edit_company_path(@company), :class => "btn btn-secondary" %>
+        <% end %>
+    </div>
     <h3>Todas as vagas dessa empresa</h3>
-    <table>
-    <% @company.job.each do |job| %>
-        <tr>
-            <% if job.Ativo? && job.expiration >= DateTime.now %>   
-                <td><%= link_to job.title, job %></td>  
-            <% end %>
-        </tr>     
-    <% end %>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Titulo</th>
+                <th scope="col">Nível</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Link</th>
+             </tr>
+        </thead>
+        <tbody>
+        <% @company.job.each do |job| %>
+            <% if job.Ativo? && job.expiration >= DateTime.now %> 
+                <tr>
+                    <td><%=job.title%></td>
+                    <td><%=job.stage%></td>
+                    <td><%=job.quantity%></td>
+                    <td><%= link_to "Ver essa vaga", job, :class => "btn btn-primary" %></td>
+                </tr>
+             <% end %>
+        <% end %>
+        </tbody>
     </table>
-    
+    <p><%=link_to "Voltar", :back, :class => "btn btn-warning" %></p>
+</div>

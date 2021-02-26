@@ -7,12 +7,13 @@ class Job < ApplicationRecord
     enum stage: { Junior: 0, Pleno: 1, Senior: 2 }
     enum status: { Ativo: true, Inativo: false }
 
-    def self.search(search)
-        if search
-            @result_search = Job.where(title: search)
-        else
-            @result_search = Job.all
-        end
+    def self.search(search)        
+        @result_search = Job.where(title: search)                
+    end
+
+    def self.searchCompany(search)       
+        company = Company.find_by(name: search)        
+        @result_search = Job.where(company: company)
     end
 
     private

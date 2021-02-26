@@ -10,40 +10,50 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>    
-    <% if employee_signed_in? %>
-      <%= current_employee.email %>
-      <%= link_to "Minha Empresa", current_employee.company %> 
-      <%= link_to "Ver Candidaturas", jobcandidates_path %>           
-      <%= link_to "Sair", destroy_employee_session_path, method: :delete  %>
-    <% else %>
-      <%if candidate_signed_in? %>
-        <%= current_candidate.email %>
-        <%= link_to "Meu Perfil", edit_candidate_registration_path %> 
-        <%= link_to "Minhas Ofertas", jobcandidates_path %>     
-        <%= link_to "Sair", destroy_candidate_session_path, method: :delete  %>
-      <% else %>      
-        <%= link_to "Entrar como Empresa", new_employee_session_path %>      
-        <%= link_to "Entrar como Candidato", new_candidate_session_path %>
-      <% end %>
-    <% end %>        
-
-    <%= link_to "Empresas", companies_path %>
-    <%= link_to "Vagas", jobs_path %>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Balcão de Emprego</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <% if employee_signed_in? %>    
+              <li class="nav-item"><%= link_to "Minha Empresa", current_employee.company, :class => "nav-link" %> </li>
+              <li class="nav-item"><%= link_to "Ver Candidaturas", jobcandidates_path, :class => "nav-link" %>  </li>         
+              <li class="nav-item"><%= link_to "Sair", destroy_employee_session_path, method: :delete, :class => "nav-link"  %></li>
+            <% else %>
+              <%if candidate_signed_in? %>      
+                <li class="nav-item"><%= link_to "Meu Perfil", edit_candidate_registration_path, :class => "nav-link" %> </li>
+                <li class="nav-item"><%= link_to "Minhas Ofertas", jobcandidates_path, :class => "nav-link" %>     </li>
+                <li class="nav-item"><%= link_to "Sair", destroy_candidate_session_path, method: :delete, :class => "nav-link"  %></li>
+              <% end %>
+            <% end %>    
+            <li class="nav-item"><%= link_to "Empresas", companies_path, :class => "nav-link" %> </li>
+            <li class="nav-item"><%= link_to "Vagas", jobs_path, :class => "nav-link" %> </li>
+          <ul>
+          <%= form_with url: "/search", method: :get, html: {class: "form-inline mt-2 mt-md-0"} do |f| %>
+            <%= f.label :query, "Buscar por:", class: 'form-control mr-sm-2' %>
+            <%= f.text_field :query, class:'form-control mr-sm-2' %>
+            <%= f.label :item, "Em: ", class:'form-control mr-sm-2' %>
+            <%= f.select :item, ['Empresa', 'Vagas'], {}, class:'form-control mr-sm-2'%>
+            <%= f.submit "Buscar", class:"btn btn-outline-success my-2 my-sm-0"%>
+          <% end %>
+        </div>
+      </nav>
+    </header>
     
-    <%= form_with url: "/search", method: :get do |f| %>
-      <%= f.label :query, "Buscar por:" %>
-      <%= f.text_field :query %>
-      <%= f.label :item, "Em: " %>
-      <%= f.select :item, ['Empresa', 'Vagas']%>
-      <%= f.submit "Buscar" %>
-    <% end %>
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-    <%= yield %>
+    <main role="main">
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>      
+
+    </main>
   </body>
 </html>
