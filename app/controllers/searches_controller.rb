@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
         @query = params[:query]
         @item = params[:item]
         if @item == "Empresa"
-            @jobs = Job.searchCompany(@query)
+            @companies = Company.search(@query)
         else
             @jobs = Job.search(@query)
         end

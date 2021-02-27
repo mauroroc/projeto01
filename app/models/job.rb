@@ -8,13 +8,8 @@ class Job < ApplicationRecord
     enum status: { Ativo: true, Inativo: false }
 
     def self.search(search)        
-        @result_search = Job.where(title: search)                
-    end
-
-    def self.searchCompany(search)       
-        company = Company.find_by(name: search)        
-        @result_search = Job.where(company: company)
-    end
+        @result_search = Job.where('title LIKE ?', "%#{search}%")                
+    end    
 
     private
         def ensure_change_status                     
