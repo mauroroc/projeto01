@@ -52,3 +52,6 @@ Ainda faltam ser concluídas as tarefas abaixo
 
 :memo: Menu "Hamburguer" do Bootstrap não funciona no celular 
 
+A cobertura de Testes está em 97,93% conforme o SimpleCov
+<img src="readme/img/tela02.jpg">
+
