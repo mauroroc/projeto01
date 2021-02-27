@@ -1,18 +1,38 @@
-<h2>Relação de Vagas com Ofertas</h2>    
-    <table>
+<div class="well text-center">    
+  <br/><h2>Relação de Vagas com Ofertas</h2><br/>
+</div>
+<div class="container">
+  <table class="table">
+    <thead>
       <tr>
-        <td>Empresa</td>
-        <td>Vaga</td>
-        <td>Candidato</td>
-        <td>Status</td>
+        <th scope="col">Empresa</th>
+        <th scope="col">Vaga</th>
+        <th scope="col">Candidato</th>
+        <th scope="col">Status</th>
+        <th scope="col">Link</th>
       </tr>
-      <% @offers.each do |offer| %>      
-      <tr>             
-        <td><%= offer.job.company.name %>        
-        <td><%= offer.job.title %>   
-        <td><%= offer.candidate.name %>     
-        <td><%= offer.status %></td>
-        <td><%= link_to "Ver essa candidatura", jobcandidate_path(offer) %>         
-      </tr>      
-      <% end %>  
-    </table>  
+    </thead>
+    <tbody>      
+        <% @offers.each do |offer| %>           
+          <% if current_employee && offer.job.company == current_employee.company%>    
+            <tr>             
+              <td><%= offer.job.company.name %>        
+              <td><%= offer.job.title %>   
+              <td><%= offer.candidate.name %>     
+              <td><%= offer.status %></td>
+              <td><%= link_to "Ver essa candidatura", jobcandidate_path(offer), :class => "btn btn-primary" %>   
+            </tr>            
+          <% end %>  
+          <% if current_candidate && offer.candidate == current_candidate%>    
+            <tr>             
+              <td><%= offer.job.company.name %>        
+              <td><%= offer.job.title %>   
+              <td><%= offer.candidate.name %>     
+              <td><%= offer.status %></td>
+              <td><%= link_to "Ver essa candidatura", jobcandidate_path(offer), :class => "btn btn-primary" %>   
+            </tr>            
+          <% end %>      
+        <% end %>        
+    </tbody>
+  </table>
+</div>

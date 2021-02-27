@@ -1,9 +1,10 @@
-<h2>Declinando a Candidatura</h2>
-
-<%=form_with url: declined_offer_path, method: :post do |f| %>
-        <dt><%= f.label :motive, 'Motivo' %></dt>
-        <dd><%= f.text_field :motive %></dd>
-        <dt><%= f.label :message, 'Mensagem Personalizada' %></dt>
-        <dd><%= f.text_area :message %></dd>          
-        <%= f.submit 'Declinar Candidato' %>        
-<% end %>
+<div class="container p-3 my-3 border">
+        <h2>Declinando a Candidatura</h2>
+        <%=form_with url: declined_offer_path, method: :post do |f| %>
+                <dt><%= f.label :motive, 'Motivo' %></dt>
+                <dd><%= f.text_field :motive %></dd>
+                <dt><%= f.label :message, 'Mensagem Personalizada' %></dt>
+                <dd><%= f.text_area :message %></dd>          
+                <%= f.submit 'Declinar Candidato', class:"btn btn-danger" %>        
+        <% end %>
+</div>

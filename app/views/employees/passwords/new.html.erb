@@ -1,5 +1,8 @@
-<h2>Forgot your password?</h2>
+<div class="container p-3 my-3 border">
+  <h2>Esqueceu sua senha?</h2>
+</div>
 
+<div class="container p-3 my-3 border">
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "employees/shared/error_messages", resource: resource %>
 
@@ -9,8 +12,9 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit "Quero receber instruções de como recuperar minha senha", class:"btn btn-outline-success" %>
   </div>
 <% end %>
 
 <%= render "employees/shared/links" %>
+</div>

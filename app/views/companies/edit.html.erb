@@ -1,31 +1,56 @@
-    
-    <%=@company.domain%>
-    <h2>Edição da Empresa</h2>
-    
+<!-- Bootstrap -->
+<div class="well text-center">    
+    <br/><h2>Edição da Empresa</h2><br/>
+</div>
+<div class="container">
     <%=form_with(model: @company) do |f| %>
-        <dt><%= f.label :name, 'Nome' %></dt>
-        <dd><%= f.text_field :name %></dd>
-        <dt><%= f.label :logo, 'Logomarca' %></dt>
-        <dd><%= f.text_field :logo %></dd>
-        <dt><%= f.label :cep, 'CEP' %></dt>
-        <dd><%= f.text_field :cep %></dd>
-        <dt><%= f.label :address, 'Logradouro' %></dt>
-        <dd><%= f.text_field :address %></dd>
-        <dt><%= f.label :address_number, 'Número' %></dt>
-        <dd><%= f.text_field :address_number %></dd>
-        <dt><%= f.label :address_door, 'Complemento' %></dt>
-        <dd><%= f.text_field :address_door %></dd>
-        <dt><%= f.label :district, 'Bairro' %></dt>
-        <dd><%= f.text_field :district %></dd>
-        <dt><%= f.label :city, 'Cidade' %></dt>
-        <dd><%= f.text_field :city %></dd>
-        <dt><%= f.label :state, 'Estado' %></dt>
-        <dd><%= f.text_field :state %></dd>
-        <dt><%= f.label :cnpj, 'CNPJ' %></dt>
-        <dd><%= f.text_field :cnpj %></dd>
-        <dt><%= f.label :url, 'Site' %></dt>
-        <dd><%= f.text_field :url %></dd>
-        <dt><%= f.label :linkedin, 'Linkedin' %></dt>
-        <dd><%= f.text_field :linkedin %></dd>
-        <%= f.submit 'Atualizar Empresa' %>        
-    <% end %>
+    <div class="row">
+        <div class="col-3 font-weight-bold"><%= f.label :name, 'Nome', class: "control-label"  %></div>
+        <div class="col-9"><%= f.text_field :name, class: "form-control" %></div>        
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold"><%= f.label :logo, 'Logomarca', class: "control-label"  %></div>
+        <div class="col-3"><%= f.text_field :logo, class: "form-control" %></div>
+        <div class="col font-weight-bold"><%= f.label :cnpj, 'CNPJ', class: "control-label"  %></div>
+        <div class="col"><%= f.text_field :cnpj, class: "form-control" %></div>        
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold"><%= f.label :address, 'Logradouro', class: "control-label"  %></div>
+        <div class="col-9"><%= f.text_field :address, class: "form-control" %></div>
+    </div>
+    <br/>
+    <div class="row">        
+        <div class="col-3 font-weight-bold"><%= f.label :address_number, 'Número', class: "control-label"  %></div>
+        <div class="col-3"><%= f.text_field :address_number, class: "form-control" %></div>
+        <div class="col-3 font-weight-bold"><%= f.label :address_door, 'Complemento', class: "control-label"  %></div>
+        <div class="col-3"><%= f.text_field :address_door, class: "form-control" %></div>
+    </div>
+    <br/>
+    <div class="row">        
+        <div class="col-3 font-weight-bold"><%= f.label :cep, 'CEP', class: "control-label"  %></div>
+        <div class="col-3"><%= f.text_field :cep, class: "form-control" %></div>
+        <div class="col-3 font-weight-bold"><%= f.label :district, 'Bairro', class: "control-label"  %></div>
+        <div class="col-3"><%= f.text_field :district, class: "form-control" %></div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold"><%= f.label :city, 'Cidade', class: "control-label"  %></div>
+        <div class="col-3"><%= f.text_field :city, class: "form-control" %></div>
+        <div class="col-3 font-weight-bold"><%= f.label :state, 'Estado', class: "control-label"  %></div>
+        <div class="col-3"><%= f.text_field :state, class: "form-control" %></div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold"><%= f.label :url, 'URL do Site', class: "control-label"  %></div>
+        <div class="col-3"><%= f.text_field :url, class: "form-control"%></div>
+        <div class="col-3 font-weight-bold"><%= f.label :linkedin, 'Link do Linkedin', class: "control-label"  %></div>
+        <div class="col-3"><%= f.text_field :linkedin, class: "form-control" %></div>
+    </div>
+    <br />
+    <div class="text-center">
+        <p><%= f.submit 'Atualizar Empresa', :class => "btn btn-success" %></p>                    
+    </div>
+    <% end %>            
+</div>

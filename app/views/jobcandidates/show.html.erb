@@ -1,68 +1,127 @@
-<h2>Informações da Vaga</h2>
-    <dt>Empresa</dt>
-    <dd><%= @job.company.name %></dd>
-    <dt>Titulo</dt>
-    <dd><%= @job.title %></dd>
-    <dt>Descrição</dt>
-    <dd><%= @job.description %></dd>
-    <dt>Faixa Salarial</dt>
-    <dd><%= @job.salary %></dd>
-    <dt>Nível</dt>
-    <dd><%= @job.stage %></dd>
-    <dt>Requisitos Obrigatórios</dt>
-    <dd><%= @job.need %></dd>
-    <dt>Data Limite</dt>
-    <dd><%= @job.expiration %></dd>
-    <dt>Total de Vagas</dt>
-    <dd><%= @job.quantity %></dd>
-
-<h2>Informações do Candidato</h2>
-    <dt>Nome Completo/Nome Social</dt>
-    <dd><%=@candidate.name%></dd>
-    <dt>CPF</dt>
-    <dd><%=@candidate.cpf%></dd>
-    <dt>E-mail</dt>
-    <dd><%=@candidate.email%></dd>
-    <dt>Telefone</dt>
-    <dd><%=@candidate.phone%></dd>
-    <dt>Biografia Resumida</dt>
-    <dd><%=@candidate.bio%></dd>
-
-<h2>Informações da Oferta</h2>
-    <dt>Status</dt>
-    <dd><%=@offer.status%></dd>
+<!-- Bootstrap -->
+<div class="well text-center">    
+    <br/><h2>Dados da Empresa</h2><br/>
+</div>
+<div class="container">
+    <h2>Informações da Vaga</h2>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Empresa</div>
+        <div class="col-9"><%= @job.company.name %></div>        
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Titulo</div>
+        <div class="col-9"><%= @job.title %></div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Descrição</div>
+        <div class="col-9"><%= @job.description %></div>        
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Requisitos Obrigatórios</div>
+        <div class="col-9"><%= @job.need %></div>        
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Faixa Salarial</div>
+        <div class="col-3"><%=@job[:salary]%></div>
+        <div class="col-3 font-weight-bold">Nível</div>
+        <div class="col-3"><%=@job[:stage]%></div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Data Limite</div>
+        <div class="col-3"><%= @job.expiration %></div>
+        <div class="col-3 font-weight-bold">Total de Vagas</div>
+        <div class="col-3"><%= @job.quantity %></div>
+    </div>
+    <br/>
+    <h2>Informações do Candidato</h2>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Nome Completo/Nome Social</div>
+        <div class="col-3"><%=@candidate.name%></div>
+        <div class="col-3 font-weight-bold">CPF</div>
+        <div class="col-3"><%=@candidate.cpf%></div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold">E-mail</div>
+        <div class="col-3"><%=@candidate.email%></div>
+        <div class="col-3 font-weight-bold">Telefone</div>
+        <div class="col-3"><%=@candidate.phone%></div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Biografia Resumida</div>
+        <div class="col-9"><%=@candidate.bio%></div>
+    </div>
+    <br/>
+    <h2>Informações da Oferta</h2>
+    <br/>
+    <div class="row">
+        <div class="col-3 font-weight-bold">Status</div>
+        <div class="col-9"><span class="alert alert-info"><%=@offer.status%></span></div>
+    </div>
+    <br/>
     <%if @offer.status == 'Candidato Declinado' || @offer.status == 'Proposta Recusada'%>
-        <dt>Motivo</dt>
-        <dd><%=@offer.motive%>
-         <%if @offer.status == 'Candidato Declinado'%>
-            <dt>Mensagem</dt>
-            <dd><%=@offer.message%>
-        <% end %>
+        <div class="row">
+            <div class="col-3 font-weight-bold">Motivo</div>
+            <div class="col-9"><%=@offer.motive%></div>
+        </div>
+        <%if @offer.status == 'Candidato Declinado'%>
+            <div class="row">
+                <div class="col-3 font-weight-bold">Mensagem</div>
+                <div class="col-9"><%=@offer.message%></div>
+            </div>
+        <% end %>        
     <%end%>
     <%if @offer.status == 'Proposta Feita' || @offer.status == 'Proposta Aceita'%>
-        <dt>Proposta Salarial</dt>
-        <dd><%=@offer.salary_proposal%>
-        <dt>Mensagem</dt>
-        <dd><%=@offer.message%>
-        <dt>Data de Inicio</dt>
-        <dd><%=@offer.start_date%>
+        <div class="row">
+            <div class="col-3 font-weight-bold">Proposta Salarial</div>
+            <div class="col-3"><%=@offer.salary_proposal%></div>
+            <div class="col-3 font-weight-bold">Data de Inicio</div>
+            <div class="col-3"><%=@offer.start_date%></div>
+        </div>
+        <br/>
+        <div class="row">
+                <div class="col-3 font-weight-bold">Mensagem</div>
+                <div class="col-9"><%=@offer.message%></div>
+        </div>
+        <br/>
         <%if @offer.status == 'Proposta Aceita'%>
-            <dt>Confirmação data de Inicio</dt>
-            <dd><%=@offer.accept_date%>
+            <div class="row">
+                <div class="col-3 font-weight-bold">Confirmação data de Inicio</div>
+                <div class="col-9">
+                    <% if @offer.accept_date %>
+                        <span class="alert alert-success">ACEITA</span>
+                    <% else %>
+                        <span class="alert alert-danger">RECUSADA</span>
+                    <% end %>
+                </div>
+            </div>
+            <br/>
+        <% end %>        
+    <%end%>  
+    <br/>
+    <div class="text-center"> 
+     <%if current_employee %>
+        <%if @offer.status=='Pendente de Avaliação'%>
+            <td class="col-6"><%= link_to 'Declinar Candidatura', decline_offer_path(@offer), :class => "btn btn-danger" %></td>
+            <td class="col-6"><%= link_to 'Enviar Proposta', proposal_offer_path(@offer), :class => "btn btn-success" %></td>
         <%end%>
-    <%end%>   
-
+    <% end %>
+    <%if current_candidate %>
+        <%if @offer.status=='Proposta Feita'%>
+            <p><%= link_to 'Recusar Oferta', refuse_offer_path(@offer), :class => "btn btn-danger" %></p>
+                <p><%= link_to 'Aceitar Oferta', accept_offer_path(@offer), :class => "btn btn-success" %></p>
+        <%end%>
+    <% end %>
+    </div>
+</div>
 <br/>
-<%if current_employee %>
-    <%if @offer.status=='Pendente de Avaliação'%>
-        <p><%= link_to 'Declinar Candidatura', decline_offer_path(@offer) %></p>
-        <p><%= link_to 'Enviar Proposta', proposal_offer_path(@offer) %></p>
-    <%end%>
-<% end %>
-<%if current_candidate %>
-    <%if @offer.status=='Proposta Feita'%>
-        <p><%= link_to 'Recusar Oferta', refuse_offer_path(@offer) %></p>
-        <p><%= link_to 'Aceitar Oferta', accept_offer_path(@offer) %></p>
-    <%end%>
-<% end %>
 
+<p class="well text-center"><%=link_to "Voltar", :back, :class => "btn btn-warning" %></p>

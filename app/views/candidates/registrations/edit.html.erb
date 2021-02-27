@@ -1,4 +1,5 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container p-3 my-3 border">
+  <h2>Editar Candidato</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "candidates/shared/error_messages", resource: resource %>
@@ -9,30 +10,30 @@
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div>Esperando confirmação do: <%= resource.unconfirmed_email %></div>
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password, "Senha" %> <i>(Se você não deseja alterar, DEIXE EM BRANCO)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %> de caracteres no mínimo</em>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "Confirmação da Senha" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password %> <i>(Você precisa colocar seu email atual para fazer as alterações)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
   <div>
-     <%= f.label :name %><br />
+     <%= f.label :name, "Nome Completo/Nome Social" %><br />
      <%= f.text_field :name, autofocus: true %>
   </div>
 
@@ -42,16 +43,17 @@
   </div>
 
   <div>
-     <%= f.label :phone %><br />
+     <%= f.label :phone, "Telefone" %><br />
      <%= f.text_field :phone, autofocus: true %>
   </div>
 
   <div>
-     <%= f.label :bio %><br />
+     <%= f.label :bio, "Biografia resumida" %><br />
      <%= f.text_area :bio, autofocus: true %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Atualizar" %>
+    <%= f.submit "Atualizar", class:"btn btn-outline-success" %>
   </div>
 <% end %>
+</div>

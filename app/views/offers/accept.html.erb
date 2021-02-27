@@ -1,7 +1,9 @@
-<h2>Aceitando a Proposta</h2>
-<%=form_with url: accepted_offer_path, method: :post do |f| %>
-        Data de Inicio <%=@offer.start_date %>
-        <dt><%= f.label :accept_date, 'Confirmo a data de inicio' %></dt>
-        <dd><%= f.check_box :accept_date %></dd>              
-        <%= f.submit 'Aceitar Proposta' %>        
-<% end %>
+<div class="container p-3 my-3 border">
+        <h2>Aceitando a Proposta</h2>
+        <%=form_with url: accepted_offer_path, method: :post do |f| %>
+                Data de Inicio <%=@offer.start_date %>
+                <dt><%= f.label :accept_date, 'Confirmo a data de inicio' %></dt>
+                <dd><%= f.check_box :accept_date %></dd>              
+                <%= f.submit 'Aceitar Proposta' %>        
+        <% end %>
+</div>

@@ -1,5 +1,6 @@
+<!-- Bootstrap -->
 <div class="well text-center">    
-    <h2>Dados da Empresa</h2>
+    <br/><h2>Dados da Empresa</h2><br/>
     <div class="container">
         <div class="row">
             <div class="col font-weight-bold">Nome</div>
@@ -9,9 +10,9 @@
         </div>
         <div class="row">
             <div class="col font-weight-bold">CNPJ</div>
-            <div class="col"><%=@company.cep%></div>
-            <div class="col font-weight-bold">CEP</div>
             <div class="col"><%=@company.cnpj%></div>
+            <div class="col font-weight-bold">CEP</div>
+            <div class="col"><%=@company.cep%></div>
         </div>
         <div class="row">
             <div class="col font-weight-bold">Logradouro</div>
@@ -37,11 +38,12 @@
             <div class="col font-weight-bold">Linkedin</div>
             <div class="col"><%=@company.linkedin%></div>
         </div>
-        <% if @admin %>   
+        <br/>
+        <% if @admin && current_employee.company == @company %>   
             <%= link_to "Editar Empresa", edit_company_path(@company), :class => "btn btn-secondary" %>
         <% end %>
     </div>
-    <h3>Todas as vagas dessa empresa</h3>
+    <br/><h3>Todas as vagas dessa empresa</h3><br/>
     <table class="table">
         <thead>
             <tr>

@@ -1,3 +1,4 @@
+<!-- Bootstrap -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,9 +20,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><%= link_to "Empresas", companies_path, :class => "nav-link" %> </li>
+            <li class="nav-item"><%= link_to "Vagas", jobs_path, :class => "nav-link" %> </li>
             <% if employee_signed_in? %>    
               <li class="nav-item"><%= link_to "Minha Empresa", current_employee.company, :class => "nav-link" %> </li>
-              <li class="nav-item"><%= link_to "Ver Candidaturas", jobcandidates_path, :class => "nav-link" %>  </li>         
+              <li class="nav-item"><%= link_to "Ver Candidaturas", jobcandidates_path, :class => "nav-link" %>  </li>                       
               <li class="nav-item"><%= link_to "Sair", destroy_employee_session_path, method: :delete, :class => "nav-link"  %></li>
             <% else %>
               <%if candidate_signed_in? %>      
@@ -29,9 +32,7 @@
                 <li class="nav-item"><%= link_to "Minhas Ofertas", jobcandidates_path, :class => "nav-link" %>     </li>
                 <li class="nav-item"><%= link_to "Sair", destroy_candidate_session_path, method: :delete, :class => "nav-link"  %></li>
               <% end %>
-            <% end %>    
-            <li class="nav-item"><%= link_to "Empresas", companies_path, :class => "nav-link" %> </li>
-            <li class="nav-item"><%= link_to "Vagas", jobs_path, :class => "nav-link" %> </li>
+            <% end %>                
           <ul>
           <%= form_with url: "/search", method: :get, html: {class: "form-inline mt-2 mt-md-0"} do |f| %>
             <%= f.label :query, "Buscar por:", class: 'form-control mr-sm-2' %>
