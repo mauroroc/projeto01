@@ -4,7 +4,7 @@ feature 'Employee see candidates' do
     scenario 'page is correct' do  
         candidate = Candidate.create!(name: 'Fulano de Tal', email: 'teste@teste.com.br', password: 'abcdef', 
             cpf: '123.456.789-00', phone: '(71) 99999-1234', bio: 'Jovem, inteligente, procurando emprego')                  
-        company = Company.create!(domain: 'xyz.com.br', name:'XYZ Empreendimentos', logo: 'logo.png', cep: '40.000-000',
+        company = Company.create!(domain: 'xyz.com.br', name:'XYZ Empreendimentos', cep: '40.000-000',
             address: 'Av. Teste', address_number: '90', address_door: 'casa 27', district: 'Centro',
             cnpj: '01.234.567/0001-89', url: 'www.xyz.com.br', linkedin: 'www.linkedin.com/xyz')
         account = Employee.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)
@@ -17,13 +17,13 @@ feature 'Employee see candidates' do
         visit root_path
         click_on "Ver Candidaturas"                
 
-        expect(page).to have_content('Ver essa candidatura')           
+        expect(page).to have_content('Relação de Vagas com Ofertas')           
     end
 
     scenario 'admin candidate' do  
         candidate = Candidate.create!(name: 'Fulano de Tal', email: 'teste@teste.com.br', password: 'abcdef', 
             cpf: '123.456.789-00', phone: '(71) 99999-1234', bio: 'Jovem, inteligente, procurando emprego')                  
-        company = Company.create!(domain: 'xyz.com.br', name:'XYZ Empreendimentos', logo: 'logo.png', cep: '40.000-000',
+        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', cep: '40.000-000',
             address: 'Av. Teste', address_number: '90', address_door: 'casa 27', district: 'Centro',
             cnpj: '01.234.567/0001-89', url: 'www.xyz.com.br', linkedin: 'www.linkedin.com/xyz')
         account = Employee.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)
@@ -45,7 +45,7 @@ feature 'Employee see candidates' do
     scenario 'decline candidate' do  
         candidate = Candidate.create!(name: 'Fulano de Tal', email: 'teste@teste.com.br', password: 'abcdef', 
             cpf: '123.456.789-00', phone: '(71) 99999-1234', bio: 'Jovem, inteligente, procurando emprego')                  
-        company = Company.create!(domain: 'xyz.com.br', name:'XYZ Empreendimentos', logo: 'logo.png', cep: '40.000-000',
+        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', cep: '40.000-000',
             address: 'Av. Teste', address_number: '90', address_door: 'casa 27', district: 'Centro',
             cnpj: '01.234.567/0001-89', url: 'www.xyz.com.br', linkedin: 'www.linkedin.com/xyz')
         account = Employee.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)
@@ -72,7 +72,7 @@ feature 'Employee see candidates' do
     scenario 'send proposal' do  
         candidate = Candidate.create!(name: 'Fulano de Tal', email: 'teste@teste.com.br', password: 'abcdef', 
             cpf: '123.456.789-00', phone: '(71) 99999-1234', bio: 'Jovem, inteligente, procurando emprego')                  
-        company = Company.create!(domain: 'xyz.com.br', name:'XYZ Empreendimentos', logo: 'logo.png', cep: '40.000-000',
+        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', cep: '40.000-000',
             address: 'Av. Teste', address_number: '90', address_door: 'casa 27', district: 'Centro',
             cnpj: '01.234.567/0001-89', url: 'www.xyz.com.br', linkedin: 'www.linkedin.com/xyz')
         account = Employee.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)

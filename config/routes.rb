@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "home#index"
   devise_for :candidates, path: 'candidates'
-  devise_for :employees, path: 'employees'
+  devise_for :employees, path: 'employees', controllers: { registrations: "registrations" }
   resource :search
   resource :candidate
   resources :offers do

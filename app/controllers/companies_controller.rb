@@ -9,8 +9,8 @@ class CompaniesController < ApplicationController
     end
 
     def update
-        @company = current_employee.company
-        if @company.update(company_params)
+        @company = current_employee.company        
+        if @company.update(company_params)            
             redirect_to @company
         else
             render :edit
@@ -33,7 +33,7 @@ class CompaniesController < ApplicationController
 
     private
         def company_params
-            params.require(:company).permit(:name, :logo, :cep, :address, :address_number, :address_door, :city,
+            params.require(:company).permit(:name, :image, :cep, :address, :address_number, :address_door, :city,
                                             :district, :state, :cnpj, :url, :linkedin)
         end
 

@@ -4,7 +4,7 @@ feature 'Employee create account using email' do
     scenario 'page is correct' do
         visit root_path
 
-        expect(page).to have_content('Balcão de Empregos')
+        expect(page).to have_content('Escolha como você deseja acessar o sistema:')
     end
 
     scenario 'successfully' do        

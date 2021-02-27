@@ -4,7 +4,7 @@ feature 'Candidate admin job offers' do
     scenario 'page is correct' do  
         candidate = Candidate.create!(name: 'Fulano de Tal', email: 'teste@teste.com.br', password: 'abcdef', 
                                     cpf: '123.456.789-00', phone: '(71) 99999-1234', bio: 'Jovem, inteligente, procurando emprego')                  
-        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', logo: 'logo.png', cep: '40.000-000',
+        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', cep: '40.000-000',
                                 address: 'Av. Teste', address_number: '90', address_door: 'casa 27', district: 'Centro',
                                 cnpj: '01.234.567/0001-89', url: 'www.xyz.com.br', linkedin: 'www.linkedin.com/xyz')        
         job1 = Job.create!(title: 'FullStack Remoto', description: 'Conhecimento em Ruby on Rails e desejável em React', 
@@ -28,7 +28,7 @@ feature 'Candidate admin job offers' do
     scenario 'Candidate refuse offer' do
         candidate = Candidate.create!(name: 'Fulano de Tal', email: 'teste@teste.com.br', password: 'abcdef', 
             cpf: '123.456.789-00', phone: '(71) 99999-1234', bio: 'Jovem, inteligente, procurando emprego')                  
-        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', logo: 'logo.png', cep: '40.000-000',
+        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', cep: '40.000-000',
             address: 'Av. Teste', address_number: '90', address_door: 'casa 27', district: 'Centro',
             cnpj: '01.234.567/0001-89', url: 'www.xyz.com.br', linkedin: 'www.linkedin.com/xyz')        
         job = Job.create!(title: 'FullStack Remoto', description: 'Conhecimento em Ruby on Rails e desejável em React', 
@@ -52,7 +52,7 @@ feature 'Candidate admin job offers' do
     scenario 'Candidate accept offer' do
         candidate = Candidate.create!(name: 'Fulano de Tal', email: 'teste@teste.com.br', password: 'abcdef', 
             cpf: '123.456.789-00', phone: '(71) 99999-1234', bio: 'Jovem, inteligente, procurando emprego')                  
-        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', logo: 'logo.png', cep: '40.000-000',
+        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', cep: '40.000-000',
             address: 'Av. Teste', address_number: '90', address_door: 'casa 27', district: 'Centro',
             cnpj: '01.234.567/0001-89', url: 'www.xyz.com.br', linkedin: 'www.linkedin.com/xyz')        
         job = Job.create!(title: 'FullStack Remoto', description: 'Conhecimento em Ruby on Rails e desejável em React', 

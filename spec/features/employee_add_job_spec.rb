@@ -44,7 +44,7 @@ feature 'Employee add job' do
    
         visit root_path
         click_on 'Vagas'
-        click_on 'FullStack Remoto'
+        click_on 'Ver essa vaga'
 
         expect(page).to have_content('Editar Vaga')
         expect(page).to have_content('Desabilitar Vaga')
@@ -62,7 +62,7 @@ feature 'Employee add job' do
    
         visit root_path
         click_on 'Vagas'
-        click_on 'FullStack Remoto'
+        click_on 'Ver essa vaga'
 
         expect(page).not_to have_content('Editar Vaga') 
         expect(page).not_to have_content('Desabilitar Vaga')       
@@ -78,7 +78,7 @@ feature 'Employee add job' do
 
         visit root_path
         click_on 'Vagas'
-        click_on 'FullStack Remoto'
+        click_on 'Ver essa vaga'
         click_on 'Editar Vaga'
 
         fill_in 'Titulo', with: 'FullStack Remoto Presencial'
@@ -100,7 +100,7 @@ feature 'Employee add job' do
 
         visit root_path
         click_on 'Vagas'
-        click_on 'FullStack Remoto'
+        click_on 'Ver essa vaga'
         click_on 'Desabilitar Vaga'
 
         expect(current_path).to eq(jobs_path)

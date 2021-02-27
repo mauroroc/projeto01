@@ -2,12 +2,12 @@
 <div class="well text-center">    
     <br/><h2>Dados da Empresa</h2><br/>
     <div class="container">
-        <div class="row">
-            <div class="col font-weight-bold">Nome</div>
-            <div class="col"><%=@company.name%></div>
-            <div class="col font-weight-bold">Logomarca</div>
-            <div class="col"><%=@company.logo%></div>
-        </div>
+        <div class="row">    
+            <%if @company.image.attached?%>      
+                <div class="col text-center"><%= image_tag(@company.image, :size => "200x200")%>
+            <%end%>
+            <span class="col font-weight-bold"><%=@company.name%></span></div>            
+        </div>        
         <div class="row">
             <div class="col font-weight-bold">CNPJ</div>
             <div class="col"><%=@company.cnpj%></div>
@@ -66,5 +66,5 @@
         <% end %>
         </tbody>
     </table>
-    <p><%=link_to "Voltar", :back, :class => "btn btn-warning" %></p>
+    <p class="text-center"><%=link_to "Voltar", :back, :class => "btn btn-warning" %></p>
 </div>

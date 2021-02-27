@@ -1,15 +1,15 @@
 <div class="well text-center">
     <div class="col-md-12">Escolha como você deseja acessar o sistema:</div>
     <div class="row">
-        <div class="col-md-6">
-            <h2>Empresa</h2>
+        <div class="col-md-6">            
             <%= link_to new_employee_session_path, :class => "nav-link" do %>
+                <h2>Empresa</h2>
                 <%= image_tag("empresa.jpg", alt: "Empresa")%>
             <% end %>
         </div>
-        <div class="col-md-6">
-            <h2>Candidato</h2>
+        <div class="col-md-6">            
             <%= link_to new_candidate_session_path, :class => "nav-link" do %>
+                <h2>Candidato</h2>
                 <%= image_tag("candidato.jpg", alt: "Colaborador")%>
             <% end %>
         </div>

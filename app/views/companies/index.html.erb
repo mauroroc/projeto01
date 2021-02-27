@@ -5,10 +5,13 @@
     <% @companies.each do |company| %>    
       <div class="col-lg-4">
         <%= link_to company, :class => "rounded" do %>
-          <dd><%= image_tag(company.logo, alt: company.name)%></dd>
-          <dt><%= company.name %></dt>
-        <% end %>
+          <%if company.image.attached?%>
+            <dd><%= image_tag(company.image, alt: company.name, :size => "200x200") %></dd>                    
+          <%end%>          
+           <dt><%= company.name %></dt>
+        <% end %>        
       </div>
     <% end %>  
   </div> 
 </div>
+

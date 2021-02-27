@@ -11,7 +11,7 @@
     <br/>
     <div class="row">
         <div class="col-3 font-weight-bold"><%= f.label :logo, 'Logomarca', class: "control-label"  %></div>
-        <div class="col-3"><%= f.text_field :logo, class: "form-control" %></div>
+        <div class="col-3"><%= f.file_field :image, class: "form-control" %></div>
         <div class="col font-weight-bold"><%= f.label :cnpj, 'CNPJ', class: "control-label"  %></div>
         <div class="col"><%= f.text_field :cnpj, class: "form-control" %></div>        
     </div>

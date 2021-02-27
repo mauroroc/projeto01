@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Visitor see companies and jobs' do
     scenario 'page is correct' do        
-        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', logo: 'logo.png', cep: '40.000-000',
+        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', cep: '40.000-000',
                                 address: 'Av. Teste', address_number: '90', address_door: 'casa 27', district: 'Centro',
                                 cnpj: '01.234.567/0001-89', url: 'www.xyz.com.br', linkedin: 'www.linkedin.com/xyz')        
         job = Job.create!(title: 'FullStack Remoto', description: 'Conhecimento em Ruby on Rails e desejável em React', 
@@ -11,13 +11,13 @@ feature 'Visitor see companies and jobs' do
 
         visit root_path
         click_on 'Empresas'
-        click_on 'xyz'
-        expect(page).to have_content('xyz')
-        expect(page).to have_content('FullStack Remoto')                  
+        click_on 'XYZ Empreendimentos'
+        expect(page).to have_content('XYZ Empreendimentos')
+        expect(page).to have_content('Dados da Empresa')                  
     end
 
     scenario 'not see a disable or not valid job' do        
-        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', logo: 'logo.png', cep: '40.000-000',
+        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', cep: '40.000-000',
                                 address: 'Av. Teste', address_number: '90', address_door: 'casa 27', district: 'Centro',
                                 cnpj: '01.234.567/0001-89', url: 'www.xyz.com.br', linkedin: 'www.linkedin.com/xyz')        
         job2 = Job.create!(title: 'FullStack Presencial', description: 'Conhecimento em Ruby on Rails e desejável em React', 
@@ -34,7 +34,7 @@ feature 'Visitor see companies and jobs' do
     end
 
     scenario 'search company' do        
-        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', logo: 'logo.png', cep: '40.000-000',
+        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', cep: '40.000-000',
                                 address: 'Av. Teste', address_number: '90', address_door: 'casa 27', district: 'Centro',
                                 cnpj: '01.234.567/0001-89', url: 'www.xyz.com.br', linkedin: 'www.linkedin.com/xyz')        
         job = Job.create!(title: 'FullStack Remoto', description: 'Conhecimento em Ruby on Rails e desejável em React', 
@@ -49,7 +49,7 @@ feature 'Visitor see companies and jobs' do
     end
 
     scenario 'search job' do        
-        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', logo: 'logo.png', cep: '40.000-000',
+        company = Company.create!(domain: 'xyz', name:'XYZ Empreendimentos', cep: '40.000-000',
                                 address: 'Av. Teste', address_number: '90', address_door: 'casa 27', district: 'Centro',
                                 cnpj: '01.234.567/0001-89', url: 'www.xyz.com.br', linkedin: 'www.linkedin.com/xyz')        
         job = Job.create!(title: 'FullStack Remoto', description: 'Conhecimento em Ruby on Rails e desejável em React', 

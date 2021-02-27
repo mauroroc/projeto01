@@ -20,8 +20,7 @@ feature 'Employee fill company information' do
         visit root_path
         click_on 'Minha Empresa'        
         click_on 'Editar Empresa'
-        fill_in 'Nome', with: 'XYZ Empreendimentos'
-        fill_in 'Logomarca', with: 'logo.png'
+        fill_in 'Nome', with: 'XYZ Empreendimentos'        
         fill_in 'CEP', with: '40.000-000'
         fill_in 'Logradouro', with: 'Av. Teste'
         fill_in 'Número', with: '90'
