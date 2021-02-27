@@ -22,7 +22,7 @@
         <br/>   
         <div class="row">
             <div class="col font-weight-bold">Data Limite</div>
-            <div class="col"><%=@job.expiration%></div>
+            <div class="col"><%= I18n.localize(@job.expiration, format: :long)%></div>
             <div class="col font-weight-bold">Total de Vagas</div>
             <div class="col"><%=@job.quantity%></div>
         </div> 

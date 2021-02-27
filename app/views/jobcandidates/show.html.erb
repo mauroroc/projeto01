@@ -34,7 +34,7 @@
     <br/>
     <div class="row">
         <div class="col-3 font-weight-bold">Data Limite</div>
-        <div class="col-3"><%= @job.expiration %></div>
+        <div class="col-3"><%= I18n.localize(@job.expiration, format: :long)%></div>
         <div class="col-3 font-weight-bold">Total de Vagas</div>
         <div class="col-3"><%= @job.quantity %></div>
     </div>
@@ -84,7 +84,7 @@
             <div class="col-3 font-weight-bold">Proposta Salarial</div>
             <div class="col-3"><%=@offer.salary_proposal%></div>
             <div class="col-3 font-weight-bold">Data de Inicio</div>
-            <div class="col-3"><%=@offer.start_date%></div>
+            <div class="col-3"><%= I18n.localize(@offer.start_date, format: :long)%></div>
         </div>
         <br/>
         <div class="row">
