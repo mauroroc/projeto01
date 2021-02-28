@@ -52,5 +52,8 @@
     <div class="text-center">
         <p><%= f.submit 'Atualizar Empresa', :class => "btn btn-success" %></p>                    
     </div>
-    <% end %>            
+    <% end %>    
+    <% @company.errors.full_messages.each do |message| %>
+        <li class="alert alert-danger"><%= message %></li>
+    <%end%>          
 </div>

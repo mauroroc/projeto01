@@ -1,0 +1,53 @@
+pt-BR:
+  activerecord:
+    models:
+      job:
+        one: Vaga
+        other: Vagas
+      candidate:
+        one: Candidato
+        other: Candidatos
+      company:
+        one: Empresa
+        other: Empresas
+      employee:
+        one: Colaborador
+        other: Colaboradores
+      job_candidate:
+        one: Oferta
+        other: Ofertas
+    attributes:
+      job:
+        title: "Título"
+        description: "Descrição"
+        salary: "Faixa de salário"
+        stage: "Nivel"
+        quantity: "Quantidade"
+        expiration: "Data de expiração"        
+      candidate:
+        name: "Nome completo/Nome social"
+        cpf: "CPF"
+        phone: "Telefone"
+        bio: "Biografia resumida"
+      company:
+        name: "Nome"
+        cep: "CEP"
+        address: "Logradouro"
+        address_number: "Número"
+        address_door: "Complemento"
+        district: "Bairro"
+        city: "Cidade"
+        state: "Estado"
+        cnpj: "CNPJ"
+        url: "Url do site"
+        linkedin: "Url do Linkedin"
+      job_candidate:
+        motive: "Motivo"
+        salary_proposal: "Proposta de Salário"
+        start_date: "Data de Inicio"
+        message: "Mensagem"
+        accept_date: "Aceite"
+
+        
+
+      

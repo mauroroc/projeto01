@@ -44,14 +44,6 @@
 
 ## Débito Técnico
 
-Ainda faltam ser concluídas as tarefas abaixo
-
-:memo: Validação dos Formulários e seus campos como CPF, CNPJ, etc...
-
-:memo: Os campos Faixa Salarial e Nivel estão com os valores das chaves ao invés das descrições
-
-:memo: Menu "Hamburguer" do Bootstrap não funciona no celular 
-
 A cobertura de Testes está em 97,93% conforme o SimpleCov
 <img src="readme/img/tela02.jpg">
 
