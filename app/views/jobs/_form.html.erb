@@ -12,9 +12,9 @@
     <br/>
     <div class="row">
         <div class="col-3 font-weight-bold"><%= f.label :salary, 'Faixa Salarial', class: "control-label" %></div>
-        <div class="col-3"><%= f.select :salary, options_for_select(["Não Definido", "Abaixo de R$ 5.000", "Entre R$ 5.000 e R$ 10.000", "Acima de R$ 10.000"], f.object.salary), {}, class:'form-control' %></div>
+        <div class="col-3"><%= f.select :salary, options_for_select(Job.salaries.map {|k, v| [I18n.t("activerecord.attributes.job.salary.#{k}"), k]}, f.object.salary), {}, class:'form-control' %></div>
         <div class="col-3 font-weight-bold"><%= f.label :stage, 'Nível', class: "control-label" %></div>
-        <div class="col-3"><%= f.select :stage, options_for_select(['Júnior','Pleno','Sênior'], f.object.stage), {}, class:'form-control' %></div>
+        <div class="col-3"><%= f.select :stage, options_for_select(Job.stages.map {|k, v| [I18n.t("activerecord.attributes.job.stage.#{k}"), k]}, f.object.stage), {}, class:'form-control' %></div>
     </div>        
     <br/>
     <div class="row">

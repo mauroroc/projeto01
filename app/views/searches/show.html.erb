@@ -16,7 +16,7 @@
         <%if @item == "Empresa"%>
           <% @companies.each do |company| %>
             <% company.job.each do |job| %>
-              <% if job.Ativo? && job.expiration >= DateTime.now %> 
+              <% if job.active? && job.expiration >= DateTime.now %> 
                  <tr>             
                   <td><%= job.company.name %>        
                   <td><%= job.title %></td>                  
@@ -28,7 +28,7 @@
           <% end %>          
         <%else%>        
           <% @jobs.each do |job| %>
-            <% if job.Ativo? && job.expiration >= DateTime.now %> 
+            <% if job.active? && job.expiration >= DateTime.now %> 
               <tr>             
                 <td><%= job.company.name %>        
                 <td><%= job.title %></td>                  

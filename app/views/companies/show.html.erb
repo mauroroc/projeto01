@@ -55,7 +55,7 @@
         </thead>
         <tbody>
         <% @company.job.each do |job| %>
-            <% if job.Ativo? && job.expiration >= DateTime.now %> 
+            <% if job.active? && job.expiration >= DateTime.now %> 
                 <tr>
                     <td><%=job.title%></td>
                     <td><%=job.stage%></td>

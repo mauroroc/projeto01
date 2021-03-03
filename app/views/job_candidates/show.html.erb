@@ -64,22 +64,22 @@
     <br/>
     <div class="row">
         <div class="col-3 font-weight-bold">Status</div>
-        <div class="col-9"><span class="alert alert-info"><%=@offer.status%></span></div>
+        <div class="col-9"><span class="alert alert-info"><%= I18n.t("activerecord.attributes.job_candidate.status.#{@offer.status}")%></span></div>
     </div>
     <br/>
-    <%if @offer.status == 'Candidato Declinado' || @offer.status == 'Proposta Recusada'%>
+    <%if @offer.declined? || @offer.refused?%>
         <div class="row">
             <div class="col-3 font-weight-bold">Motivo</div>
             <div class="col-9"><%=@offer.motive%></div>
         </div>
-        <%if @offer.status == 'Candidato Declinado'%>
+        <%if @offer.declined?%>
             <div class="row">
                 <div class="col-3 font-weight-bold">Mensagem</div>
                 <div class="col-9"><%=@offer.message%></div>
             </div>
         <% end %>        
     <%end%>
-    <%if @offer.status == 'Proposta Feita' || @offer.status == 'Proposta Aceita'%>
+    <%if @offer.proposal? || @offer.accepted?%>
         <div class="row">
             <div class="col-3 font-weight-bold">Proposta Salarial</div>
             <div class="col-3"><%=@offer.salary_proposal%></div>
@@ -92,7 +92,7 @@
                 <div class="col-9"><%=@offer.message%></div>
         </div>
         <br/>
-        <%if @offer.status == 'Proposta Aceita'%>
+        <%if @offer.accepted?%>
             <div class="row">
                 <div class="col-3 font-weight-bold">Confirmação data de Inicio</div>
                 <div class="col-9">
@@ -109,13 +109,13 @@
     <br/>
     <div class="text-center"> 
      <%if current_employee %>
-        <%if @offer.status=='Pendente de Avaliação'%>
+        <%if @offer.pending?%>
             <td class="col-6"><%= link_to 'Declinar Candidatura', decline_offer_path(@offer), :class => "btn btn-danger" %></td>
             <td class="col-6"><%= link_to 'Enviar Proposta', proposal_offer_path(@offer), :class => "btn btn-success" %></td>
         <%end%>
     <% end %>
-    <%if current_candidate %>
-        <%if @offer.status=='Proposta Feita'%>
+    <%if current_candidate %>        
+        <%if @offer.proposal?%>
             <p><%= link_to 'Recusar Oferta', refuse_offer_path(@offer), :class => "btn btn-danger" %></p>
                 <p><%= link_to 'Aceitar Oferta', accept_offer_path(@offer), :class => "btn btn-success" %></p>
         <%end%>

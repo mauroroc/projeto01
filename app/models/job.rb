@@ -3,9 +3,9 @@ class Job < ApplicationRecord
     has_many :jobcandidate
     before_validation :ensure_change_status
 
-    enum salary: { "Não Definido": 0, "Abaixo de R$ 5.000": 1, "Entre R$ 5.000 e R$ 10.000": 2, "Acima de R$ 10.000": 3 }
-    enum stage: { "Júnior": 0, "Pleno": 1, "Sênior": 2 }
-    enum status: { Ativo: true, Inativo: false }
+    enum salary: { undefined: 0, under: 1, between: 2, above: 3 }
+    enum stage: { junior: 0, full: 1, senior: 2 }
+    enum status: { active: true, inactive: false }
 
     validates :title, presence: true
     validates :need, presence: true

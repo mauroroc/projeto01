@@ -14,11 +14,11 @@
     </thead>
     <tbody>
       <% @jobs.each do |job| %>
-        <% if job.Ativo? && job.expiration >= DateTime.now%> 
+        <% if job.active? && job.expiration >= DateTime.now%> 
           <tr>             
             <td><%= job.company.name %>        
             <td><%= job.title %></td>                  
-            <td><%= job.status %></td> 
+            <td><%= I18n.t("activerecord.attributes.job.status.#{job.status}") %></td> 
             <td><%= link_to "Ver essa vaga", job, :class => "btn btn-primary" %></td>       
           </tr>
         <% end %>

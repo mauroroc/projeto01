@@ -19,7 +19,7 @@
               <td><%= offer.job.company.name %>        
               <td><%= offer.job.title %>   
               <td><%= offer.candidate.name %>     
-              <td><%= offer.status %></td>
+              <td><%= I18n.t("activerecord.attributes.job_candidate.status.#{offer.status}")%></td>
               <td><%= link_to "Ver essa candidatura", job_candidate_path(offer), :class => "btn btn-primary" %>   
             </tr>            
           <% end %>  
@@ -28,7 +28,7 @@
               <td><%= offer.job.company.name %>        
               <td><%= offer.job.title %>   
               <td><%= offer.candidate.name %>     
-              <td><%= offer.status %></td>
+              <td><%= I18n.t("activerecord.attributes.job_candidate.status.#{offer.status}")%></td>
               <td><%= link_to "Ver essa candidatura", job_candidate_path(offer), :class => "btn btn-primary" %>   
             </tr>            
           <% end %>      

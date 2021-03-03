@@ -23,7 +23,19 @@ pt-BR:
         salary: "Faixa de salário"
         stage: "Nivel"
         quantity: "Quantidade"
-        expiration: "Data de expiração"        
+        expiration: "Data de expiração"   
+        salary:
+          undefined: "Não Definido"
+          under: "Abaixo de R$ 5.000"
+          between: "Entre R$ 5.000 e R$ 10.000"
+          above: "Acima de R$ 10.000"
+        stage:
+          junior: "Júnior"
+          full: "Pleno"
+          senior: "Sênior"
+        status:
+          active: "Ativo"
+          inactive: "Inativo"
       candidate:
         name: "Nome completo/Nome social"
         cpf: "CPF"
@@ -47,6 +59,12 @@ pt-BR:
         start_date: "Data de Inicio"
         message: "Mensagem"
         accept_date: "Aceite"
+        status:
+          pending: 'Pendente de Avaliação'
+          declined: 'Candidato Declinado'
+          proposal: 'Proposta Feita'
+          refused: 'Proposta Recusada'
+          accepted: 'Proposta Aceita'
 
         
 

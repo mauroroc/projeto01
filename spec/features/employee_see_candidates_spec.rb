@@ -64,9 +64,6 @@ feature 'Employee see candidates' do
         fill_in 'Mensagem', with: 'Gostamos muito do seu perfil, mas acho que precisa de mais experiência'  
         click_on 'Declinar Candidato'     
         
-        job_candidate.reload
-        expect(job_candidate.status).to eq('Candidato Declinado')
-        expect(job_candidate.motive).to eq('Pouca experiência no momento')
         expect(page).to have_content('Candidato Declinado')
     end
 
@@ -93,10 +90,6 @@ feature 'Employee see candidates' do
         fill_in 'Data de Inicio', with: '20/03/2021'  
         click_on 'Enviar Proposta'     
 
-        job_candidate.reload
-        expect(job_candidate.status).to eq("Proposta Feita") 
-        expect(job_candidate.message).to eq('Gostamos muito do seu perfil, queremos contratá-lo')
-        expect(job_candidate.salary_proposal).to eq('R$ 3.500 com beneficios')  
         expect(page).to have_content('Proposta Feita')        
     end
 end

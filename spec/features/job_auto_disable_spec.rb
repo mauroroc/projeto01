@@ -23,6 +23,6 @@ feature 'Job disable automatic' do
 
         job.reload
         expect(job.quantity).to eq(0) 
-        expect(job.status).to eq('Inativo') 
+        expect(job.status).to eq('inactive') 
     end  
 end

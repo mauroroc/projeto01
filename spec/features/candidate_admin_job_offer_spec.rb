@@ -44,9 +44,7 @@ feature 'Candidate admin job offers' do
         click_on "Recusar Oferta"
         fill_in 'Motivo', with: 'Não tenho interesse no valor oferecido'
         click_on "Confirmar Recusa"
-
-        job_candidate.reload
-        expect(job_candidate.status).to eq('Proposta Recusada') 
+                
         expect(page).to have_content('Proposta Recusada') 
 
     end
@@ -70,9 +68,7 @@ feature 'Candidate admin job offers' do
         click_on "Aceitar Oferta"  
         check "Confirmo a data de inicio"
         click_on "Aceitar Proposta"
-
-        job_candidate.reload
-        expect(job_candidate.status).to eq('Proposta Aceita')
+       
         expect(page).to have_content('Proposta Aceita') 
     end
 end
