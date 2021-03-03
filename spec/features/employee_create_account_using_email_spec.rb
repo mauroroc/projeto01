@@ -10,7 +10,7 @@ feature 'Employee create account using email' do
     scenario 'successfully' do        
         company = Company.create!(domain: 'xyz')
         account = Employee.create!(email: 'mauro@xyz.com.br', password: '123456', company: company, admin: false)
-        company.updateAdm!(account)
+        company.update_adm!(account)
                 
         expect(company).to be_valid
         expect(account).to be_valid

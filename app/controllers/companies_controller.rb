@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
-    #before_action :authenticate_employee!
+    before_action :authenticate_employee! , except: [:show, :index]
+    
     def index
         @companies = Company.all
     end

@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   root "home#index"
   devise_for :candidates, path: 'candidates'
   devise_for :employees, path: 'employees', controllers: { registrations: "registrations" }
-  resource :search
-  resource :candidate
+  resource :search, only: [:show]
+  resource :candidate, only: [:show]
+
+  #Criar 4 novos controles OfferDecline, OfferProposal, OfferRefuse, OfferAccepted
   resources :offers do
     member do
       post 'make' 
@@ -17,12 +19,10 @@ Rails.application.routes.draw do
       post 'accepted'
     end
   end
-  resources :jobcandidates
-  resources :companies
-  resources :jobs do
-    post 'disable', on: :member    
+  resources :job_candidates, only: [:index, :show]
+  resources :companies, only: [:index, :edit, :update, :show]
+  resources :jobs, only:[:index, :show, :new, :create, :edit, :update] do
+    post 'disable', on: :member
   end
-  
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  
+    
 end

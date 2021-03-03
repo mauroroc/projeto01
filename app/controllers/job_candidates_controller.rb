@@ -1,4 +1,6 @@
-class JobcandidatesController < ApplicationController
+class JobCandidatesController < ApplicationController
+    before_action :authenticate_any
+
     def index
         if current_employee                
             @offers = JobCandidate.all
@@ -16,4 +18,5 @@ class JobcandidatesController < ApplicationController
         @job = @offer.job
         @candidate = @offer.candidate
     end
+    
 end

@@ -1,4 +1,5 @@
 class OffersController < ApplicationController
+    before_action :authenticate_any
 
     def make
         job = Job.find(params[:id])
@@ -15,7 +16,7 @@ class OffersController < ApplicationController
         @offer.update_attribute(:motive, params[:motive])
         @offer.update_attribute(:message, params[:message])
         @offer.update_attribute(:status, 1)
-        redirect_to jobcandidates_path
+        redirect_to job_candidates_path
     end
     
     def proposal
@@ -28,7 +29,7 @@ class OffersController < ApplicationController
         @offer.update_attribute(:start_date, params[:start_date])
         @offer.update_attribute(:message, params[:message])
         @offer.update_attribute(:status, 2)
-        redirect_to jobcandidates_path
+        redirect_to job_candidates_path
     end
 
     def refuse
@@ -39,7 +40,7 @@ class OffersController < ApplicationController
         @offer = JobCandidate.find(params[:id]) 
         @offer.update_attribute(:motive, params[:motive])
         @offer.update_attribute(:status, 3)
-        redirect_to jobcandidates_path
+        redirect_to job_candidates_path
     end
 
     def accept
@@ -57,6 +58,6 @@ class OffersController < ApplicationController
         if qtd == 0
             job.update_attribute(:status, false)        
         end
-        redirect_to jobcandidates_path        
+        redirect_to job_candidates_path        
     end
 end

@@ -31,11 +31,11 @@
               <li class="nav-item"><%= link_to "Vagas", jobs_path, :class => "nav-link" %> </li>
               <% if employee_signed_in? %>    
                 <li class="nav-item"><%= link_to "Minha Empresa", current_employee.company, :class => "nav-link" %> </li>
-                <li class="nav-item"><%= link_to "Ver Candidaturas", jobcandidates_path, :class => "nav-link" %>  </li>                                     
+                <li class="nav-item"><%= link_to "Ver Candidaturas", job_candidates_path, :class => "nav-link" %>  </li>                                     
               <% else %>
                 <%if candidate_signed_in? %>      
                   <li class="nav-item"><%= link_to "Meu Perfil", edit_candidate_registration_path, :class => "nav-link" %> </li>
-                  <li class="nav-item"><%= link_to "Minhas Ofertas", jobcandidates_path, :class => "nav-link" %>     </li>                
+                  <li class="nav-item"><%= link_to "Minhas Ofertas", job_candidates_path, :class => "nav-link" %>     </li>                
                 <% end %>
               <% end %>                
             <ul>          

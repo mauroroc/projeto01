@@ -20,7 +20,7 @@
               <td><%= offer.job.title %>   
               <td><%= offer.candidate.name %>     
               <td><%= offer.status %></td>
-              <td><%= link_to "Ver essa candidatura", jobcandidate_path(offer), :class => "btn btn-primary" %>   
+              <td><%= link_to "Ver essa candidatura", job_candidate_path(offer), :class => "btn btn-primary" %>   
             </tr>            
           <% end %>  
           <% if current_candidate && offer.candidate == current_candidate%>    
@@ -29,7 +29,7 @@
               <td><%= offer.job.title %>   
               <td><%= offer.candidate.name %>     
               <td><%= offer.status %></td>
-              <td><%= link_to "Ver essa candidatura", jobcandidate_path(offer), :class => "btn btn-primary" %>   
+              <td><%= link_to "Ver essa candidatura", job_candidate_path(offer), :class => "btn btn-primary" %>   
             </tr>            
           <% end %>      
         <% end %>        

@@ -1,5 +1,6 @@
-class JobsController < ApplicationController
-    #before_action :authenticate_employee!
+class JobsController < ApplicationController    
+    before_action :authenticate_employee!, except: [:show, :index]
+    
     def index
         if current_employee
             @jobs = Job.all

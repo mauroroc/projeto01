@@ -3,7 +3,7 @@ class Company < ApplicationRecord
     has_many :job
     has_one_attached :image        
 
-    def updateAdm!(employee)
+    def update_adm!(employee)
         employee.admin = true
     end
 
