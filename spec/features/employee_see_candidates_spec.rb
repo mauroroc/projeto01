@@ -67,6 +67,7 @@ feature 'Employee see candidates' do
         job_candidate.reload
         expect(job_candidate.status).to eq('Candidato Declinado')
         expect(job_candidate.motive).to eq('Pouca experiência no momento')
+        expect(page).to have_content('Candidato Declinado')
     end
 
     scenario 'send proposal' do  
@@ -95,6 +96,7 @@ feature 'Employee see candidates' do
         job_candidate.reload
         expect(job_candidate.status).to eq("Proposta Feita") 
         expect(job_candidate.message).to eq('Gostamos muito do seu perfil, queremos contratá-lo')
-        expect(job_candidate.salary_proposal).to eq('R$ 3.500 com beneficios')          
+        expect(job_candidate.salary_proposal).to eq('R$ 3.500 com beneficios')  
+        expect(page).to have_content('Proposta Feita')        
     end
 end

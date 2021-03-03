@@ -46,7 +46,9 @@ feature 'Candidate admin job offers' do
         click_on "Confirmar Recusa"
 
         job_candidate.reload
-        expect(job_candidate.status).to eq('Proposta Recusada') # 3 é proposta recusada pelo candidato        
+        expect(job_candidate.status).to eq('Proposta Recusada') 
+        expect(page).to have_content('Proposta Recusada') 
+
     end
 
     scenario 'Candidate accept offer' do
@@ -70,6 +72,7 @@ feature 'Candidate admin job offers' do
         click_on "Aceitar Proposta"
 
         job_candidate.reload
-        expect(job_candidate.status).to eq('Proposta Aceita') # 4 é proposta aceita pelo candidato        
+        expect(job_candidate.status).to eq('Proposta Aceita')
+        expect(page).to have_content('Proposta Aceita') 
     end
 end

@@ -38,6 +38,8 @@ feature 'Visitor see companies and jobs' do
         click_on 'Cadastrar'
 
         expect(Candidate.count).to eq(1)
+        expect(page).to have_content('Login efetuado com sucesso')
+
     end
 
     scenario 'update candidate' do  

@@ -42,10 +42,11 @@ feature 'Visitor see companies and jobs' do
             quantity: 10, company: company, status: true)
 
         visit root_path
-        fill_in 'Busca', with: 'XYZ Empreendimentos'
+        fill_in 'Buscar por', with: 'XYZ Empreendimentos'
+        select 'Empresa', from: 'Em'
         click_on 'Buscar'
                         
-        expect(page).to have_content('XYZ Empreendimentos')                     
+        expect(page).to have_content('FullStack Remoto')                     
     end
 
     scenario 'search job' do        
@@ -56,10 +57,11 @@ feature 'Visitor see companies and jobs' do
             salary: 1, stage: 1, need: 'Nível superior', expiration: '20/06/2021',
             quantity: 10, company: company, status: true)
 
-        visit root_path
-        fill_in 'Busca', with: 'FullStack Remoto'
+        visit root_path        
+        fill_in 'Buscar por', with: 'FullStack Remoto'
+        select 'Vagas', from: 'Em'
         click_on 'Buscar'
                                 
-        expect(page).to have_content('FullStack Remoto')                
+        expect(page).to have_content('XYZ Empreendimentos')                
     end
 end

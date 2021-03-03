@@ -53,9 +53,9 @@
           <%end%>
         <%end%>
         <%= form_with url: "/search", method: :get, html: {class: "form-inline text-center"} do |f| %>
-          <%= f.label :query, "Buscar por:", class: 'form-control mr-sm-2' %>
+          <%= f.label :query, "Buscar por", class: 'form-control mr-sm-2' %>
           <%= f.text_field :query, class:'form-control mr-sm-2' %>
-          <%= f.label :item, "Em: ", class:'form-control mr-sm-2' %>
+          <%= f.label :item, "Em", class:'form-control mr-sm-2' %>
           <%= f.select :item, ['Empresa', 'Vagas'], {}, class:'form-control mr-sm-2'%>
           <%= f.submit "Buscar", class:"btn btn-outline-success my-2 my-sm-0"%>
         <% end %>
