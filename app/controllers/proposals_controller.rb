@@ -12,7 +12,7 @@ class ProposalsController < ApplicationController
         update_params[:job_candidate] = job_candidate
         @proposal = Proposal.new(update_params)
         if @proposal.save
-            job_candidate.update_attribute(:status, 2)
+            job_candidate.proposal_status
             redirect_to job_candidates_path
         else
             render :new
@@ -29,13 +29,13 @@ class ProposalsController < ApplicationController
         job_candidate = JobCandidate.find(proposal_update_params[:job_candidate]) 
         proposal = Proposal.find(params[:id]) 
         if proposal_update_params[:accept]
-            job_candidate.update_attribute(:status, 4)           
+            job_candidate.accepted_status           
             job_candidate.job.vaga_occupied                                
             redirect_to job_candidates_path  
         else
             if proposal_update_params[:decline]                
                 proposal.update_attribute(:motive, proposal_update_params[:motive])
-                job_candidate.update_attribute(:status, 3)
+                job_candidate.refused_status
                 redirect_to job_candidates_path
             else
                 render :edit

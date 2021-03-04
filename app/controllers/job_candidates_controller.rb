@@ -28,7 +28,7 @@ class JobCandidatesController < ApplicationController
         @offer = JobCandidate.find(params[:id]) 
         @offer.update_attribute(:motive, decline_params[:motive])
         @offer.update_attribute(:message, decline_params[:message])
-        @offer.update_attribute(:status, 1)
+        @offer.declined_status
         redirect_to job_candidates_path
     end
 
