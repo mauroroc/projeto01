@@ -17,6 +17,14 @@ class Job < ApplicationRecord
         @result_search = Job.where('title LIKE ?', "%#{search}%")                
     end    
 
+    def vaga_occupied
+        qtd = self.quantity - 1
+        self.update_attribute(:quantity, qtd)     
+        if qtd == 0
+            self.update_attribute(:status, false)        
+        end          
+    end
+
     private
         def ensure_change_status                     
             self.status = true

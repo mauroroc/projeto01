@@ -16,7 +16,25 @@ class JobCandidatesController < ApplicationController
     def show
         @offer = JobCandidate.find(params[:id])
         @job = @offer.job
-        @candidate = @offer.candidate
+        @candidate = @offer.candidate  
+        @proposal = @offer.proposal      
     end
+
+    def edit
+        @offer = JobCandidate.find(params[:id])          
+    end
+
+    def update        
+        @offer = JobCandidate.find(params[:id]) 
+        @offer.update_attribute(:motive, decline_params[:motive])
+        @offer.update_attribute(:message, decline_params[:message])
+        @offer.update_attribute(:status, 1)
+        redirect_to job_candidates_path
+    end
+
+    private
+        def decline_params
+            params.require(:job_candidate).permit(:motive, :message)            
+        end
     
 end

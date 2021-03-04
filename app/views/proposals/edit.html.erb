@@ -1,0 +1,21 @@
+<div class="container p-3 my-3 border">
+    <% if @accept == "true" %>
+        <h2>Aceitando a Proposta</h2>
+        <%=form_with(model:@proposal) do |f| %>
+            Data de Inicio <%=@proposal.start_date %>
+            <dt><%= f.label :accept, 'Confirmo a data de inicio' %></dt>
+            <dd><%= f.check_box :accept %></dd> 
+            <%= f.hidden_field :job_candidate, value: @offer.id %>                  
+            <%= f.submit 'Aceitar Proposta' %>        
+        <% end %>
+    <%else%>
+        <h2>Recusando a Oferta</h2>
+        <%=form_with(model:@proposal) do |f| %>
+            <dt><%= f.label :motive, 'Motivo' %></dt>
+            <dd><%= f.text_field :motive %></dd>  
+            <%= f.hidden_field :decline, value:true %> 
+            <%= f.hidden_field :job_candidate, value: @offer.id %>              
+            <%= f.submit 'Confirmar Recusa' %>        
+        <% end %>
+    <%end%>
+</div>

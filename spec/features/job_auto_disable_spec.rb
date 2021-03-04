@@ -10,8 +10,9 @@ feature 'Job disable automatic' do
         job = Job.create!(title: 'FullStack Remoto', description: 'Conhecimento em Ruby on Rails e desejável em React', 
             salary: 1, stage: 1, need: 'Nível superior', expiration: '20/06/2021',
             quantity: 1, company: company, status: true)   
-        job_candidate = JobCandidate.create!(job: job, candidate: candidate, status: 2, message: 'Gostamos muito do seu perfil, queremos contratá-lo', 
-                        salary_proposal: 'R$ 3.500 com beneficios', start_date: '20/03/2021') 
+            job_candidate = JobCandidate.create!(job: job, candidate: candidate, status: 2) 
+            proposal = Proposal.create!(job_candidate: job_candidate, message: 'Gostamos muito do seu perfil, queremos contratá-lo', 
+                salary_proposal: 'R$ 3.500 com beneficios', start_date: '20/03/2021')
 
         login_as candidate, :scope => :candidate
         visit root_path

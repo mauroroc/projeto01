@@ -82,29 +82,42 @@
     <%if @offer.proposal? || @offer.accepted?%>
         <div class="row">
             <div class="col-3 font-weight-bold">Proposta Salarial</div>
-            <div class="col-3"><%=@proposal.salary_proposal%></div>
+            <div class="col-3"><%=@offer.salary_proposal%></div>
             <div class="col-3 font-weight-bold">Data de Inicio</div>
-            <div class="col-3"><%= I18n.localize(@proposal.start_date, format: :long)%></div>
+            <div class="col-3"><%= I18n.localize(@offer.start_date, format: :long)%></div>
         </div>
         <br/>
         <div class="row">
                 <div class="col-3 font-weight-bold">Mensagem</div>
-                <div class="col-9"><%=@proposal.message%></div>
+                <div class="col-9"><%=@offer.message%></div>
         </div>
-        <br/>              
+        <br/>
+        <%if @offer.accepted?%>
+            <div class="row">
+                <div class="col-3 font-weight-bold">Confirmação data de Inicio</div>
+                <div class="col-9">
+                    <% if @offer.accept_date %>
+                        <span class="alert alert-success">ACEITA</span>
+                    <% else %>
+                        <span class="alert alert-danger">RECUSADA</span>
+                    <% end %>
+                </div>
+            </div>
+            <br/>
+        <% end %>        
     <%end%>  
     <br/>
     <div class="text-center"> 
      <%if current_employee %>
         <%if @offer.pending?%>
-            <td class="col-6"><%= link_to 'Declinar Candidatura', edit_job_candidate_path(@offer), :class => "btn btn-danger" %></td>
+            <td class="col-6"><%= link_to 'Declinar Candidatura', decline_offer_path(@offer), :class => "btn btn-danger" %></td>
             <td class="col-6"><%= link_to 'Enviar Proposta', new_proposal_path(:offer => @offer.id), :class => "btn btn-success" %></td>
         <%end%>
     <% end %>
     <%if current_candidate %>        
         <%if @offer.proposal?%>
-            <p><%= link_to 'Recusar Oferta', edit_proposal_path(:offer => @offer.id, :accept => false), :class => "btn btn-danger" %></p>
-                <p><%= link_to 'Aceitar Oferta', edit_proposal_path(:offer => @offer.id, :accept => true), :class => "btn btn-success" %></p>
+            <p><%= link_to 'Recusar Oferta', refuse_offer_path(@offer), :class => "btn btn-danger" %></p>
+                <p><%= link_to 'Aceitar Oferta', accept_offer_path(@offer), :class => "btn btn-success" %></p>
         <%end%>
     <% end %>
     </div>

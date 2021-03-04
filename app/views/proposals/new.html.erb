@@ -1,0 +1,13 @@
+<div class="container p-3 my-3 border">
+    <h2>Fazendo proposta ao Candidato</h2>
+    <%=form_with(model: @proposal) do |f| %>
+        <dt><%= f.label :salary_proposal, 'Proposta Salarial' %></dt>
+        <dd><%= f.text_field :salary_proposal %></dd>
+        <dt><%= f.label :message, 'Mensagem Personalizada' %></dt>
+        <dd><%= f.text_area :message %></dd> 
+        <dt><%= f.label :start_date, 'Data de Inicio' %></dt>
+        <dd><%= f.text_field :start_date %></dd>  
+        <%= f.hidden_field :job_candidate, value: @offer.id %>       
+        <%= f.submit 'Enviar Proposta', class:"btn btn-success" %>        
+    <% end %>
+</div>

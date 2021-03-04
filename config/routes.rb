@@ -9,20 +9,21 @@ Rails.application.routes.draw do
   resources :offers do
     member do
       post 'make' 
-      get 'decline'
-      get 'proposal'
-      post 'declined'
-      post 'sended'
+      #get 'decline'
+      #get 'proposal'
+      #post 'declined'
+      #post 'sended'
       get 'refuse'
       get 'accept'
       post 'refused'
       post 'accepted'
     end
   end
-  resources :job_candidates, only: [:index, :show]
+  resources :job_candidates, only: [:index, :show, :edit, :update]
   resources :companies, only: [:index, :edit, :update, :show]
   resources :jobs, only:[:index, :show, :new, :create, :edit, :update] do
     post 'disable', on: :member
   end
-    
+  resources :proposals, only: [:new, :create, :edit, :update]  
+
 end
