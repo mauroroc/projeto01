@@ -8,6 +8,7 @@ describe 'API' do
                                     cnpj: '01.234.567/0001-89', url: 'www.xyz.com.br', linkedin: 'www.linkedin.com/xyz')        
             get "/api/v1/companies/#{company.id}"
 
+            
             expect(response).to have_http_status(200)
         end
     end
