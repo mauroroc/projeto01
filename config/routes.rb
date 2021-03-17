@@ -11,4 +11,10 @@ Rails.application.routes.draw do
   end
   resources :proposals, only: [:new, :create, :edit, :update]  
 
+  namespace 'api', defaults: { format: :json } do
+    namespace 'v1' do
+      resources :companies, only: [:show]
+    end
+  end
+
 end
